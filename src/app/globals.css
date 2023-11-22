@@ -25,3 +25,28 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+/* 임시 css */
+.input {
+  background-color: black;
+}
+
+.Bookpic {
+  max-width: 100%;
+  width: 150px;
+  height: 200px;
+  background-color: #dfccfb;
+  border-radius: 10%;
+  text-align: center;
+}
+
+.SingleBook {
+  flex-direction: column;
+  /* justify-content: center; */
+  text-align: center;
+  padding: 10px;
+
+  display: flex; /* 요소를 가로로 정렬하기 위해 Flexbox 레이아웃을 사용 */
+  align-items: center; /* 요소를 수직으로 중앙 정렬 */
+  justify-content: center;
+}
