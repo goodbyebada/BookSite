@@ -1,0 +1,117 @@
+body {
+  background-color: #f9f3cc;
+}
+
+.SingleBook {
+  flex-direction: column;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: content-box;
+}
+
+.SingleBook {
+  flex-direction: column;
+  width: 200px;
+  height: 100%;
+  /* justify-content: center; */
+
+  /* padding: 10px; */
+  margin: 10px;
+  text-decoration-line: none;
+  /* border: #beadfa; */
+  /* border-style: dotted; */
+
+  display: flex; /* 요소를 가로로 정렬하기 위해 Flexbox 레이아웃을 사용 */
+  /* align-items: center; 요소를 수직으로 중앙 정렬 */
+  /* justify-content: center; */
+  flex: 1 1 0;
+}
+
+.BooksLists {
+  display: flex;
+  border: solid #b6b6b6;
+  width: 100%;
+  height: 400px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
+.RecommandBooks {
+  /* height: 100%; */
+  background-color: #c9d2c2;
+  margin: 10px;
+
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+
+  overflow-y: hidden;
+}
+
+.RecommandBooks .SingleBook {
+  height: 100%;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.BorrowBook {
+  background-color: #d7dbe2;
+  width: 100px;
+}
+
+.BooksDiv .introHeader {
+  font-size: x-large;
+  text-align: center;
+  padding: 10px;
+}
+
+.BooksDiv .Login {
+  background-color: transparent;
+  text-decoration-style: none;
+  border: solid rgb(2, 2, 2);
+  width: 5%;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.Bookpic {
+  max-width: 100%;
+  width: 150px;
+  height: 200px;
+  background-color: #dfccfb;
+  border-radius: 10%;
+  text-align: center;
+}
+
+.SingleBook p {
+  size: 10px;
+  color: black;
+  text-decoration-line: none;
+}
+/* .SetOfBooks {
+} */
+
+/* .RecommandBooks {
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+  overflow: auto;
+
+  background-color: #d7e5ca;
+
+  overflow: auto;
+} */

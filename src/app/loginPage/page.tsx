@@ -1,6 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
-import "./LoginPage.css";
+import "../../styles/loginPage.css";
 import axios from "axios";
 
 import { useRouter } from "next/navigation";
@@ -21,35 +22,33 @@ function LoginPage() {
     setInputPW(e.target.value);
   };
 
-  let nextPage = 0;
-
-  const loginFun = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const loginFun = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    login({
+      id: inputID,
+      password2: inputPW,
+      onSuccess: () => {
+        alert("login success");
+        // setIdState(!idState);
+
+        router.push(`/userBooks/${inputID}`);
+      },
+      onFail: () => {
+        alert("fail");
+      },
+    });
   };
 
-  // login(
-  //   id,
-  //   password2,
-  //   () => {
-  //     alert("login success");
-  //     setIdState(!idState);
-  //     router("/UserBooks", {
-  //       state: {
-  //         userName: `${inputID}`,
-  //       },
-  //     });
-  //     router.push("/UserBooks");
-  //     // 경로이동
-  //   },
-  //   () => alert("fail")
-  // );
-
-
+  type loginForm = {
+    id: string | number;
+    password2: string;
+    onSuccess: Function;
+    onFail: Function;
+  };
 
   let baseUrl = "https://bc87b101-4a86-4419-a9e4-2648ec0bde58.mock.pstmn.io";
-  // function login({ id, password2, onSuccess, onFail }: loginForm) {
-
-  function login(id, password2, onSuccess, onFail) {
+  function login({ id, password2, onSuccess, onFail }: loginForm) {
+    // function login(id, password2, onSuccess, onFail) {
     let url = baseUrl + "/login";
 
     let body = {

@@ -1,24 +1,25 @@
-import "./Book.css";
-// import { useNavigate, useLocation } from "react-router-dom";
-import PropTypes from "prop-types";
+"use client";
+
+import "../css/aboutBook.css";
+import { useRouter } from "next/navigation";
 
 function SingleBook() {
+  const router = useRouter();
   //   const navigate = useNavigate();
   //   const location = useLocation();
   // const userName = location.state.userName;
   // const [state, setStae] = useState(false);
 
-  //   function goToAbout() {
-  //     navigate("/AboutBook");
-  //   }
+  function goToAbout() {
+    router.push("/aboutBook");
+  }
 
   return (
-    <div>
+    <div onClick={goToAbout}>
       <div className="SingleBook">
         <div className="Bookpic"></div>
         <p>BookName</p>
         <p> Writer</p>
-        <p> 대출정보</p>
       </div>
     </div>
   );

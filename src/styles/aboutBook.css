@@ -1,0 +1,82 @@
+/* .Bookpic {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  border-radius: 10%;
+  text-align: center;
+} */
+
+.RecommandBooks {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 20px;
+}
+
+.Top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.Top .Bookpic {
+  padding: 10px;
+  margin: 20px;
+}
+
+.Contents {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+  .Index {
+    width: 30%;
+    padding: 50px;
+    border: solid;
+    margin: 10px;
+  }
+
+  .Review {
+    width: 30%;
+    padding: 50px;
+    border: solid;
+    margin: 10px;
+
+    .form {
+      display: flex;
+      vertical-align: middle;
+    }
+
+    .ReviewContent {
+      border: solid;
+      margin: 10px;
+    }
+  }
+
+  .Location {
+    width: 30%;
+    padding: 50px;
+    border: solid;
+    margin: 10px;
+  }
+}
+
+.AboutHeader {
+  color: rgb(40, 28, 76);
+  border-bottom: solid;
+  padding: 20px;
+
+  font-size: xxx-large;
+  text-align: center;
+}
+
+.GetBack {
+  margin: 10px;
+  background-color: transparent;
+  border-color: black;
+  border-radius: 10px;
+  padding: 10px;
+}

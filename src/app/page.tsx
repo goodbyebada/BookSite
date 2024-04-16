@@ -1,28 +1,13 @@
-// import Image from "next/image";
+import MainPage from "../components/component/mainPage";
 
-import SampleList from "./component/sampleList";
-import SingleBook from "./component/singleBook";
-import Greetings from "./testComponent/greeting";
-import PutName from "./testComponent/PutName";
+import { FirstScreen } from "../components/component/firstScreen";
 
-export interface genereProps {
-  id: number;
-  genre: string;
-}
-
-export default function Home() {
-  const genresList: genereProps[] = [
-    { id: 1, genre: "Romance" },
-    { id: 2, genre: "Action" },
-    { id: 3, genre: "Thriller" },
-  ];
+export default async function Home() {
+  // let list: [] = data.item;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      This is Home Page!
-      {/* <SampleList genres={genres} />
-       */}
-      <SampleList dataList={genresList} />
+      <MainPage />
     </main>
   );
 }

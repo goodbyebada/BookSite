@@ -1,22 +1,15 @@
-.SingleBook {
-  box-sizing: content-box;
-}
-
-.SetOfBooks {
-}
-
-.BooksLists {
+/* .BooksLists {
   display: flex;
   border: solid #beadfa;
   border-radius: 20px;
   width: 100%;
   height: 400px;
-}
+} */
 
-.BorrowBook {
+/* .BorrowBook {
   background-color: #d2e0fb;
   width: 100px;
-}
+} */
 
 .RecommandBooks {
   background-color: rgb(255, 243, 218);
