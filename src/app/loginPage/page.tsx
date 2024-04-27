@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import "../../styles/loginPage.css";
 import axios from "axios";
-
-import { useRouter } from "next/navigation";
 
 function LoginPage() {
   const [inputID, setInputID] = useState("");
   const [inputPW, setInputPW] = useState("");
   // const [idState, setIdState] = useState(false);
+
   const router = useRouter();
 
   const url =
@@ -29,9 +29,16 @@ function LoginPage() {
       password2: inputPW,
       onSuccess: () => {
         alert("login success");
-        // setIdState(!idState);
 
-        router.push(`/userBooks/${inputID}`);
+        /** 사용자 로그인
+         *
+         * to Back : 로그인 정보
+         * return : 사용자 정보를 반영한 -> 카테고리 목록
+         */
+
+        console.log("api 주세오 ");
+
+        router.push(`/`);
       },
       onFail: () => {
         alert("fail");

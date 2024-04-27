@@ -1,11 +1,11 @@
 "use client";
 
-import "../../components/component/css/AboutBook.css";
-import SingleBook from "../../components/containers/(book)/singleBook";
+import "../../styles/aboutBook.css";
+import SingleBook from "../../components/containers/book/singleBook";
 import { Component, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { reviewType } from "../../components/component/model/interfaceModel";
+import { reviewType } from "../../components/model/interfaceModel";
 
 function AboutBook() {
   const dummyReviewList: reviewType[] = [

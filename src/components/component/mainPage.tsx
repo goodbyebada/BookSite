@@ -1,31 +1,31 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ShowBooks from "../containers/(book)/showBooks";
-import SearchBar from "../containers/searchBar";
-import { useRouter } from "next/navigation";
+import ShowBooks from "@components/containers/book/showBooks";
+import HeaderWrap from "@components/containers/headerWrap";
+import SearchBar from "@components/containers/searchBar";
 
 // 첫화면
 export default function MainPage() {
-  const router = useRouter();
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="BooksDiv">
-        <div className="Login" onClick={() => router.push("/loginPage")}>
-          login
-        </div>
-        <SearchBar />
+    <>
+      <HeaderWrap />
+      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <div className="BooksDiv">
+          <div className="introHeader">
+            <h2> MAIN PAGE </h2>
+            <SearchBar />
+          </div>
 
-        <header className="introHeader">
-          <h2> &quot; 오늘의 책은? &quot;</h2>
-          <p> 책을 추천해드려요! </p>
-        </header>
-
-        <div className="SetOfBooks">
-          <ShowBooks />
+          <div className="SetOfBooks">
+            <ShowBooks />
+            <ShowBooks />
+            <ShowBooks />
+            <ShowBooks />
+            <ShowBooks />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

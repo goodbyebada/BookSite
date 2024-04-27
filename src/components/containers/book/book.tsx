@@ -1,19 +1,21 @@
 "use client";
 
-// import "./component/css/Book.css"
-// import "/Applications/Postman.app";
-
+import "@styles/book.css";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { BookInfo } from "./showBooks";
+import { dataProps, Props } from "./bookLists";
+
 /*
 : 부모-> 자식 컴포넌트로 props를 전달할때, 자식 컴포넌트에서 해당 props(allowedRoles)의 타입을 (타입스크립트가) 이해하지 못할 때 발생했습니다
 : 자식컴포넌트에서 구조분해할당{}으로 받는 props의 타입을 정의해야하는 이슈 입니다. */
 
-// bookInfo는 bookInfo 인자를 가진 객체임
-// export default function Book(data: BookInfo) {
-export default function Book({ data }: { data: BookInfo }) {
-  const { title, author, cover, description, ...rest } = data;
+export interface bookInterface {
+  // key: number;
+  data: dataProps;
+}
+
+export default function Book({ data }: bookInterface) {
+  const { itemId, cover, title, author } = data;
   const pathname = usePathname();
 
   const router = useRouter();
