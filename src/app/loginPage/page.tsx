@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "../../styles/loginPage.css";
 import axios from "axios";
+import Link from "next/link";
 
 function LoginPage() {
   const [inputID, setInputID] = useState("");
@@ -24,6 +25,7 @@ function LoginPage() {
 
   const loginFun = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+
     login({
       id: inputID,
       password2: inputPW,
@@ -53,7 +55,7 @@ function LoginPage() {
     onFail: Function;
   };
 
-  let baseUrl = "https://bc87b101-4a86-4419-a9e4-2648ec0bde58.mock.pstmn.io";
+  let baseUrl = "https://bc87b101-4a86-4419-a9e4x-2648ec0bde58.mock.pstmn.io";
   function login({ id, password2, onSuccess, onFail }: loginForm) {
     // function login(id, password2, onSuccess, onFail) {
     let url = baseUrl + "/login";
@@ -63,13 +65,18 @@ function LoginPage() {
       password: password2,
     };
 
-    axios.post(url, body).then((response) => {
-      if (response.status == 200) {
-        onSuccess();
-      } else {
-        onFail();
-      }
-    });
+    axios
+      .post(url, body)
+      .then((response) => {
+        if (response.status == 200) {
+          onSuccess();
+        } else {
+          onFail();
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
@@ -79,6 +86,8 @@ function LoginPage() {
           <p>Sign In</p>
           <div className="row">
             <input
+              id="id"
+              className="login"
               type="text"
               placeholder="id"
               value={inputID}
@@ -87,6 +96,8 @@ function LoginPage() {
           </div>
           <div className="row">
             <input
+              id="pw"
+              className="login"
               type="password"
               placeholder="password"
               value={inputPW}
@@ -94,10 +105,14 @@ function LoginPage() {
             ></input>
           </div>
 
-          <button className="form_btn">회원가입</button>
+          <Link className="form_btn" href="/signUp">
+            회원가입
+          </Link>
+
           <button type="submit" onClick={loginFun} className="form_btn">
             login
           </button>
+          {/* 로직 수행이니, router가 맞다 */}
         </form>
       </div>
     </div>

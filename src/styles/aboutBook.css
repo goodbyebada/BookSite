@@ -1,28 +1,32 @@
-/* .Bookpic {
-  width: 100px;
-  height: 100px;
-  background-color: blue;
-  border-radius: 10%;
-  text-align: center;
-} */
-
-.RecommandBooks {
+/* .RecommandBooks {
   display: flex;
   justify-content: space-around;
   text-align: center;
   font-size: 20px;
+} */
+
+.main > * {
+  border: red dotted;
+  height: 500px;
+  /* 임시 */
 }
 
 .Top {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  flex-direction: column;
+
+  /* 임시 */
 }
 
 .Top .Bookpic {
-  padding: 10px;
-  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+.Top .Bookpic img {
+  width: 30%;
+  height: 30%;
 }
 
 .Contents {
@@ -31,37 +35,37 @@
   text-align: center;
   display: flex;
   justify-content: center;
+}
 
-  .Index {
-    width: 30%;
-    padding: 50px;
-    border: solid;
-    margin: 10px;
-  }
+.Index {
+  width: 30%;
+  padding: 50px;
+  border: solid;
+  margin: 10px;
+}
 
-  .Review {
-    width: 30%;
-    padding: 50px;
-    border: solid;
-    margin: 10px;
+.Review {
+  width: 30%;
+  padding: 50px;
+  border: solid;
+  margin: 10px;
+}
 
-    .form {
-      display: flex;
-      vertical-align: middle;
-    }
+.form {
+  display: flex;
+  vertical-align: middle;
+}
 
-    .ReviewContent {
-      border: solid;
-      margin: 10px;
-    }
-  }
+.ReviewContent {
+  border: solid;
+  margin: 10px;
+}
 
-  .Location {
-    width: 30%;
-    padding: 50px;
-    border: solid;
-    margin: 10px;
-  }
+.Location {
+  width: 30%;
+  padding: 50px;
+  border: solid;
+  margin: 10px;
 }
 
 .AboutHeader {

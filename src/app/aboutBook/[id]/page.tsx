@@ -1,13 +1,14 @@
 "use client";
 
-import "../../styles/aboutBook.css";
-import SingleBook from "../../components/containers/book/singleBook";
+import "@styles/aboutBook.css";
+import SingleBook from "@components/containers/book/singleBook";
 import { Component, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { reviewType } from "../../components/model/interfaceModel";
+import { reviewType } from "@components/model/interfaceModel";
+import AboutBookContent from "@components/component/aboutBook";
 
-function AboutBook() {
+function AboutBook({ params: { id } }: { params: { id: string } }) {
   const dummyReviewList: reviewType[] = [
     {
       id: 1,
@@ -50,8 +51,8 @@ function AboutBook() {
   }
 
   //훅 중첩된 함수에서 실행하지 말아야됨
-  useMakeReviewList();
-  showReviews();
+  // useMakeReviewList();
+  // showReviews();
 
   function showReviews() {
     return (
@@ -120,14 +121,18 @@ function AboutBook() {
         </button>
 
         <div className="Top">
-          <div className="Bookpic"></div>
+          <div className="Bookpic">
+            <img src="https://i.namu.wiki/i/t0Ulyc-RFU0amTC9CSFFngWlvrrIU1l0uLU_BeZi3MkewszHEqvFfPcO1QcaU5Haqi6Gc456WLi-OK_C2iFcQrTv7ATt0JnZzNtWrBS6falIhherbgALYs95IquGTYyOHOxyiDjirI_62z4xN72kXQ.webp" />
+          </div>
           <div className="Details">
             <p>책 이름: example</p>
             <p>작가: example</p>
             <p> 줄거리: example </p>
           </div>
         </div>
-        <div className="Contents">
+
+        <AboutBookContent />
+        {/* <div className="Contents">
           <div className="Index">
             <h2>목차</h2>
             <li> 1.example</li>
@@ -155,7 +160,7 @@ function AboutBook() {
             <li> 소장위치:한국시문학관(2층) </li>
             <li> 청구기호: Example</li>
           </div>
-        </div>
+        </div> */}
 
         {/* 이 작품과 유사한 추천 작품 */}
         <div className="RecommandBooks">
@@ -174,27 +179,3 @@ function AboutBook() {
 }
 
 export default AboutBook;
-
-// "use client";
-
-// import AboutBook from "../component/aboutBook";
-
-// type userType = {
-//   name: string;
-//   id: number;
-// };
-
-// const num = 1;
-
-// export default function TestPage() {
-//   const dummyUser: userType = {
-//     name: "test",
-//     id: 1,
-//   };
-//   return (
-//     <div>
-//       <h1>About Book Page</h1>
-//       <AboutBook />
-//     </div>
-//   );
-// }

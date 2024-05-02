@@ -8,7 +8,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ToggleContainer from "./toggleContainer";
 
 export default function SearchBar() {
   const [isOpen, setToggleMenu] = useState(false);
@@ -20,13 +19,22 @@ export default function SearchBar() {
 
   return (
     <div>
-      <ToggleContainer />
-
-      {["1", "2", "3"].map((elm, index) => (
-        <li key={index}>{elm}</li>
-      ))}
-
-      <input placeholder="검색어를 입력해주세요" onChange={onEvent}></input>
+      <nav className="navbar">
+        <div className="container-fluid">
+          <form className="d-flex" role="search">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="검색어를 입력해주세요."
+              aria-label="Search"
+              onChange={onEvent}
+            ></input>
+            <button className="btn btn-outline-primary" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
     </div>
   );
 }

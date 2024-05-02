@@ -1,11 +1,9 @@
-// import React, { useEffect, useState } from "react";
 import Book from "./book";
-import SingleBook from "./singleBook";
-// import { GetData } from "../apiFolder/getData";
 import { api } from "../../../data/tmpApi";
+import { bookDataListProps } from "@components/model/interfaceModel";
+import { bookDataProps } from "@components/model/interfaceModel";
 
-// 알라딘 aPI 기준
-export interface BookInfo {
+interface externalTypeData {
   title: string;
   link: string;
   author: string;
@@ -27,32 +25,50 @@ export interface BookInfo {
   adult: boolean;
   fixedPrice: boolean;
   customerReviewRank: number;
-  subInfo: Record<string, any>; // 특정 형식을 가지는 서브 정보의 형식이 없으므로 Record<string, any>으로 대체
+  subInfo: Record<string, any>; // 추가 정보를 위한 속성
 }
 
-function booklists(dataList: BookInfo[]) {
+/**
+ *알라딘에서 받아온 data  bookDataProps type으로 가공하는 함수
+ */
+function ExternalTypeToInnerType(
+  list: bookDataProps[] | externalTypeData[]
+): bookDataProps[] {
+  const convertedList: bookDataProps[] = list.map((elem: any) => {
+    const { title, author, publisher, cover, isbn, itemId }: any = elem;
+
+    const bookData: bookDataProps = {
+      id: itemId,
+      title: title,
+      author: author,
+      publisher: publisher,
+      cover: cover,
+      isbn: parseInt(isbn),
+    };
+
+    return bookData;
+  });
+
+  return convertedList;
+}
+
+function booklists(dataList: bookDataProps[] | externalTypeData[]) {
+  const convertedList = ExternalTypeToInnerType(dataList);
+
   return (
     <div className="BooksLists">
       <div className="RecommandBooks">
-        {dataList && dataList.map((e) => <Book key={e.itemId} data={e} />)}
+        {dataList &&
+          convertedList.map((e: bookDataProps) => {
+            return <Book key={e.id} bookInfo={e} />;
+          })}
       </div>
     </div>
   );
 }
 
 export default function ShowBooks() {
-  // export default function BookLists() {
-  // const [hasRendered, setHasRendered] = useState(false);
-
-  // useEffect(() => {
-  //   if (dataList?.length == 0) {
-  //     getData(); // You can call fetchData if dataList is not null
-  //   }
-  //   setHasRendered(true);
-  // }, [hasRendered]);
-
-  // let data = await GetData();
-  let dataList = api();
+  let dataList: externalTypeData[] = api();
 
   return (
     <>

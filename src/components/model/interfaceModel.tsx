@@ -1,18 +1,29 @@
-interface dataProps {
-  itemId: number;
-  cover: string;
+interface schoolBookDataProps {
+  id: number;
   title: string;
   author: string;
-
   publisher: string;
-  description: string;
-  categoryId: number;
-  categoryName: string;
-  // isbn: string;
+  cover: string;
+
+  isbn?: number;
+  publisherYear?: number;
+  classNo?: number;
+  // 621.3192
+  star?: number;
 }
 
-export interface dataListProps {
-  dataList: dataProps[];
+// 알라딘 API props
+export interface bookDataProps extends schoolBookDataProps {
+  // cover: string;
+  description?: string;
+  categoryId?: number;
+  categoryName?: string;
+  pubDate?: string;
+  customerReviewRank?: number;
+}
+
+export interface bookDataListProps {
+  dataList: bookDataProps[];
 }
 
 export interface reviewType {
