@@ -20,7 +20,8 @@
 
 .row {
   display: flex;
-  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
 }
 
 /* input {
@@ -35,7 +36,7 @@
   background: #eee;
   padding: 16px;
   margin: 8px 0;
-  width: 85%;
+  width: 100%;
   border: 0;
   outline: none;
   border-radius: 20px;

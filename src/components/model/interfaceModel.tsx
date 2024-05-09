@@ -26,8 +26,40 @@ export interface bookDataListProps {
   dataList: bookDataProps[];
 }
 
+export interface externalTypeData {
+  title: string;
+  link: string;
+  author: string;
+  pubDate: string;
+  description: string;
+  isbn: string;
+  isbn13: string;
+  itemId: number;
+  priceSales: number;
+  priceStandard: number;
+  mallType: string;
+  stockStatus: string;
+  mileage: number;
+  cover: string;
+  categoryId: number;
+  categoryName: string;
+  publisher: string;
+  salesPoint: number;
+  adult: boolean;
+  fixedPrice: boolean;
+  customerReviewRank: number;
+  subInfo: Record<string, any>; // 추가 정보를 위한 속성
+}
+
 export interface reviewType {
   id: string | number;
   starRate: number;
   review: string;
 }
+
+export type loginFormType = {
+  id: string | number;
+  password: string;
+  onSuccess: Function;
+  onFail: Function;
+};

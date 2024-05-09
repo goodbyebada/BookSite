@@ -21,6 +21,11 @@ body {
   /*헤더를 위 */
 }
 
+a {
+  text-decoration-line: none;
+  color: black;
+}
+
 /* font size 고정해놓음 */
 .ui {
   background-color: rgb(174, 222, 252);
@@ -93,4 +98,29 @@ ul {
 .dropDown_list {
   display: flex;
   flex-direction: column;
+}
+
+.RecommandBooks {
+  height: 100%;
+
+  background-color: white;
+
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+  /* overflow-y: hidden; */
+}
+
+.book_content_cotainer {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-style: solid;
+  border-color: black;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+/* 책들간의 간격을 위해 */
+
+.swiper {
+  position: sticky;
 }

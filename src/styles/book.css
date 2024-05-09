@@ -1,32 +1,58 @@
-.BooksLists {
-  margin-top: 5%;
-  margin-bottom: 5%;
-  border-style: solid;
-  border-color: black;
-  margin-left: 3%;
-  margin-right: 3%;
+.book_recommand_list {
+  border: solid #32a1ce 10px;
 }
-/* 책들간의 간격을 위해 */
 
-.book_image_container {
+.book_board {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+
+  align-items: center;
+
+  /* height: 20%; */
+  width: 100%;
+  /* padding: 5px 0px; */
+}
+
+.main_content_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.book_skill_container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* 중앙정렬 */
+
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  /* 넘치면 가린다  */
+
+  border: solid midnightblue 10px;
+}
+
+.book_skill_slide {
+  position: relative;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+
+  height: 100%;
+  /* width: 100%; */
+
+  /* gap: 12px; */
+  border: solid pink 10px;
+}
+
+.test_ui {
+  background-color: violet;
+  border: solid mintcream 10px;
 }
 
 /*책 이미지 정렬*/
-
-.RecommandBooks {
-  height: 100%;
-
-  background-color: white;
-
-  overflow-x: scroll;
-  display: flex;
-  flex-direction: row;
-  /* text-align: center; */
-  /* align-items: center; */
-  /* justify-content: center; */
-
-  overflow-y: hidden;
-}
 
 .BooksDiv .introHeader {
   font-size: x-large;
@@ -35,25 +61,26 @@
 }
 
 .singleBook {
-  text-align: center;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-sizing: content-box;
-  width: 200px;
-  height: 100%;
-
-  text-decoration-line: none;
-  border: #beadfa;
-  border-style: dotted;
-
   display: flex; /* 요소를 가로로 정렬하기 위해 Flexbox 레이아웃을 사용 */
-  flex: 1 1 0;
+  /* text-align: center;s */
+
+  /* height: 100%; */
+  /* width: 100%; */
+
+  
+  flex-direction: column;
+  background-color: rebeccapurple;
+  text-decoration-line: none;
+  box-sizing: content-box;
 }
 
-.RecommandBooks {
-  background-color: rgb(255, 243, 218);
-  overflow-x: scroll;
+.singleBook .book_image {
+  height: 50%;
+  padding-right: 100px;
+}
+
+.singleBook img {
+  box-sizing: content-box;
 }
 
 .thumbs {
@@ -75,3 +102,5 @@
 .thumbs #up :hover {
   border-color: red;
 }
+
+/* test */

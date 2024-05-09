@@ -1,4 +1,4 @@
-import InputTemplate from "@components/containers/signUp/inputTemplate";
+import InputTemplate from "@components/containers/sign/inputTemplate";
 import test from "src/utils/signUp/signUpUtils";
 
 export default function SignUpTemplate() {
