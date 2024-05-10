@@ -22,7 +22,8 @@
     "paths": {
       // "@/*": ["./src/*"]
       "@styles/*": ["./src/styles/*"],
-      "@components/*": ["./src/components/*"]
+      "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"]
       // "paths": { "@별칭명/*": ["경로/*"] }
     }
   },

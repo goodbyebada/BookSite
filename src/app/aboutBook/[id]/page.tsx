@@ -8,25 +8,10 @@ import { useEffect } from "react";
 import { reviewType } from "@components/model/interfaceModel";
 import AboutBookContent from "@components/component/aboutBook";
 
-function AboutBook({ params: { id } }: { params: { id: string } }) {
-  const dummyReviewList: reviewType[] = [
-    {
-      id: 1,
-      starRate: 3,
-      review: "test1",
-    },
-    {
-      id: 2,
-      starRate: 5,
-      review: "test2",
-    },
-    {
-      id: 3,
-      starRate: 4,
-      review: "test3",
-    },
-  ];
+// dummy
+import dummyReviewList from "@data/tmpReveiw";
 
+function AboutBook({ params: { id } }: { params: { id: string } }) {
   // let navigate = useNavigate();
   const router = useRouter();
   const [value, setValue] = useState("");
@@ -144,35 +129,6 @@ function AboutBook({ params: { id } }: { params: { id: string } }) {
         </div>
 
         <AboutBookContent />
-        {/* <div className="Contents">
-          <div className="Index">
-            <h2>목차</h2>
-            <li> 1.example</li>
-            <li> 2.example</li>
-            <li> 3.example</li>
-          </div>
-          <div className="Review">
-            <h2>서평</h2>
-            <form onSubmit={submitEvent}>
-              <p>
-                별점:
-                <input
-                  value={starRate}
-                  className="StarRating"
-                  placeholder="별점을 입력해주세요"
-                  onChange={onChangeStar}
-                ></input>
-              </p>
-              {enrollReview()}
-              {showReviews()}
-            </form>
-          </div>
-          <div className="Location">
-            <h2>소장정보</h2>
-            <li> 소장위치:한국시문학관(2층) </li>
-            <li> 청구기호: Example</li>
-          </div>
-        </div> */}
 
         {/* 이 작품과 유사한 추천 작품 */}
         <div className="RecommandBooks">

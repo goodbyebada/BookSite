@@ -1,4 +1,4 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 * {
   margin: 0;
   padding: 0;
@@ -14,10 +14,10 @@ button {
 }
 
 body {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   background-color: #f9f3cc;
-  padding-top: 75px;
+  /* padding-top: 75px; */
   /*헤더를 위 */
 }
 
@@ -123,4 +123,9 @@ ul {
 
 .swiper {
   position: sticky;
+}
+@media screen and (max-width: 1024px) {
+  .tab_content {
+    padding: 0 24px;
+  }
 }

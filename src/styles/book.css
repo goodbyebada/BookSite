@@ -54,10 +54,16 @@
 
 /*책 이미지 정렬*/
 
+.BooksDiv {
+  height: 100%;
+  width: 100%;
+}
+
 .BooksDiv .introHeader {
   font-size: x-large;
   text-align: center;
-  padding: 10px;
+  padding-top: 75px;
+  width: 100px;
 }
 
 .singleBook {
@@ -67,7 +73,6 @@
   /* height: 100%; */
   /* width: 100%; */
 
-  
   flex-direction: column;
   background-color: rebeccapurple;
   text-decoration-line: none;

@@ -13,7 +13,7 @@ export default function MainPage() {
     <>
       <HeaderWrap />
 
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between">
         <div className="BooksDiv">
           <div className="introHeader">
             <h2> MAIN PAGE </h2>

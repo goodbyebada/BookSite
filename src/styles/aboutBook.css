@@ -5,6 +5,11 @@
   font-size: 20px;
 } */
 
+.main {
+  border: red dotted;
+  height: 500px;
+  /* 임시 */
+}
 .main > * {
   border: red dotted;
   height: 500px;
@@ -71,7 +76,6 @@
 .AboutHeader {
   color: rgb(40, 28, 76);
   border-bottom: solid;
-  padding: 20px;
 
   font-size: xxx-large;
   text-align: center;
@@ -83,4 +87,13 @@
   border-color: black;
   border-radius: 10px;
   padding: 10px;
+}
+
+/* aboutBook - content */
+
+#aboutBook_tab {
+  height: 2.5rem;
+}
+.tab_section {
+  padding-top: 2.5rem;
 }
