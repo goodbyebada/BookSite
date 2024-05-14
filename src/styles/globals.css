@@ -11,9 +11,15 @@ body {
   /* 수평 스크롤 방지 */
 }
 
+/* 내가 지정 */
+.mt-500 {
+  margin-top: 75px;
+}
+
 .test_ui {
   background-color: var(--bs-blue);
   border: solid mintcream 10px;
+  height: 500px;
 }
 
 body {

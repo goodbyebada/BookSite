@@ -8,9 +8,10 @@ export default function BookInfoContent({
 }: {
   bookData: bookDataProps;
 }) {
+  // 왜 되냐
   console.log("BookInfoContent render");
   return (
-    <div className="p-2">
+    <div className="mt-500">
       <div className="Top">
         <div className="Bookpic"></div>
 

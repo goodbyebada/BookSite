@@ -27,14 +27,14 @@ export default function HeaderWrap({
           <Link className="p-3 navbar-brand" href={"/"}>
             HOME
           </Link>
-          <ul className="ms-auto">
+          {/* <ul className="ms-auto">
             <Link onClick={onClick} className="p-3 nav-link" href="/loginPage">
               Login
             </Link>
             <Link className=" p-3 pr-3 nav-link" href="#">
               Profile
             </Link>
-          </ul>
+          </ul> */}
         </div>
       </nav>
       {children}

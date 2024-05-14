@@ -25,7 +25,7 @@ export default function DetailContent({ content }: { content: bookDataProps }) {
   };
 
   return (
-    <div onClick={onClick} className="tab_content">
+    <div onClick={onClick} className="w-100 p-3">
       <DetailNav scrollRef={scrollRef} />
 
       {/*(single) BookData 정보가져오면 map을 사용 못한다. 배열이 아니라 하나의 객체이기 때문이다*/}

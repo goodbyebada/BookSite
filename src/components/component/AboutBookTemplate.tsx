@@ -4,7 +4,7 @@ import AboutBookWrapper from "@components/containers/aboutBook/AboutBookWrapper"
 import { dummyApi } from "@data/dummyApi";
 import { useEffect, useState } from "react";
 import { bookDataProps } from "@components/model/interfaceModel";
-export default function AboutBookTemplate() {
+export default function AboutBookTemplate({ id }: { id: number }) {
   console.log("This is About Book Content");
 
   const [data, setDataList] = useState<bookDataProps>();
@@ -12,17 +12,29 @@ export default function AboutBookTemplate() {
   useEffect(() => {
     const dummyList = dummyApi();
     console.log("API 호출");
-    const testBook = dummyList[0];
-    // 한 책에 대한 정보만 보낸다
 
-    setDataList(testBook);
+    // 알라딘 itemId로 설정
+    console.log(id);
+
+    // const testBook = dummyList.filter((e) => e.itemId === Number(id));
+    const testBook = dummyList.filter((e) => e.itemId === id);
+    // 빈공백 반환한다
+    // 오류ㄴ
+    // params에서 id string을 반환해주니까 생긴 오류
+
+    setDataList(testBook[0]);
   }, []);
   // API 한번 호출
 
   return (
     <>
       <AboutBookWrapper>
-        {data === undefined ? "loading" : <BookInfoContent bookData={data} />};
+        {data === undefined ? (
+          <div className="test_ui">"loading"</div>
+        ) : (
+          <BookInfoContent bookData={data} />
+        )}
+        ;
       </AboutBookWrapper>
       <footer className="p-5">공백 늘리기용</footer>
     </>
