@@ -8,13 +8,8 @@
 .main {
   border: red dotted;
   height: 500px;
-  /* 임시 */
 }
-.main > * {
-  border: red dotted;
-  height: 500px;
-  /* 임시 */
-}
+/* 임시 */
 
 .Top {
   display: flex;
@@ -96,4 +91,5 @@
 }
 .tab_section {
   padding-top: 2.5rem;
+  box-sizing: border-box;
 }

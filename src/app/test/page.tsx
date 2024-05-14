@@ -1,56 +1,45 @@
 "use client";
 
-import { useState } from "react";
-import { useRef } from "react";
+import { requestAsyncStorage } from "next/dist/client/components/request-async-storage.external";
+import React, { useRef, useState } from "react";
+import UserList from "./testComponent";
+// import UserList from "./UserList";
+// import CreateUser from "./CreateUser";
 
-function InputSample() {
-  const [inputs, setInputs] = useState({
-    name: "",
-    nickname: "",
-  });
-  const nameInput = useRef<any>(null);
-
-  const { name, nickname } = inputs; // 비구조화 할당을 통해 값 추출
-
-  const onChange = (e: any) => {
-    const { value, name } = e.target; // 우선 e.target 에서 name 과 value 를 추출
-    setInputs({
-      ...inputs, // 기존의 input 객체를 복사한 뒤
-      [name]: value, // name 키를 가진 값을 value 로 설정
-    });
-
-    console.log(nameInput.current.value);
-  };
-
-  const onReset = () => {
-    setInputs({
-      name: "",
-      nickname: "",
-    });
-    nameInput.current.focus();
-  };
+const Children = () => {
+  const [state, setState] = useState(false);
+  const handleClickButton = () => setState(!state);
+  console.log("Children 컴포넌트 리렌더링");
 
   return (
     <div>
-      <input
-        name="name"
-        placeholder="이름"
-        onChange={onChange}
-        ref={nameInput}
-      />
-      <input
-        name="nickname"
-        placeholder="닉네임"
-        onChange={onChange}
-        value={nickname}
-      />
-      <button onClick={onReset}>초기화</button>
-      <div>
-        <b>값: </b>
-        {name} ({nickname})
-      </div>
+      <button>Children 상태변화</button>
+      {state ? <p> 안뇽</p> : ""}
+    </div>
+  );
+};
+
+// const Parent = ({ children }: { children: JSX.Element }) => {
+//   console.log("Parent 컴포넌트 리렌더링");
+//   return <div>{children}</div>;
+// };
+const Parent = () => {
+  // console.log("Parent 컴포넌트 리렌더링");
+  return (
+    <div>
+      <p>안</p>
+      <Children />
+      <p>녕</p>
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div>
+      <Parent />
     </div>
   );
 }
 
-export default InputSample;
+export default App;

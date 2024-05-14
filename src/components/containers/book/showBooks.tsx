@@ -1,19 +1,17 @@
 "use client";
 
 import Book from "./book";
-import { api } from "../../../data/tmpApi";
-import { bookDataListProps } from "@components/model/interfaceModel";
+import { dummyApi } from "../../../data/dummyApi";
 import { bookDataProps } from "@components/model/interfaceModel";
 import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import ArrowComponet from "./arrow";
 import { externalTypeData } from "@components/model/interfaceModel";
-
-import "@styles/book.css";
+import styles from "@styles/book.module.css";
 
 export default function ShowBooks() {
-  let dataList: externalTypeData[] = api();
+  let dataList: externalTypeData[] = dummyApi();
 
   return (
     <>
@@ -53,7 +51,6 @@ function booklists(dataList: bookDataProps[] | externalTypeData[]) {
   // 현재 슬라이드를 나타내는 useState
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
   const viewingSkill = 4;
 
   const TOTAL_SLIDES = Math.ceil(dataList.length / viewingSkill - 1);
@@ -68,16 +65,13 @@ function booklists(dataList: bookDataProps[] | externalTypeData[]) {
   const handleClickNextSlide = () => {
     if (currentSlide >= TOTAL_SLIDES) {
       console.log(`total slide ${TOTAL_SLIDES}`);
-
       // 더이상 이동할 슬라이드가 없다면
-
       setCurrentSlide(firstSlide);
       // 첫번째 슬라이드로 이동.
     } else {
       setCurrentSlide(currentSlide + 1);
       // 아니라면 다음 슬라이드로 이동.
     }
-
     // 로그 찍어보니 12까지 찍고 다시 0으로 복귀
   };
 
@@ -130,16 +124,18 @@ function booklists(dataList: bookDataProps[] | externalTypeData[]) {
     }
   }, [currentSlide]);
 
+  console.log("This is showBook");
+
   return (
-    <div className="book_recommand_list">
+    <div className={styles.book_recommand_list}>
       <h3>추천합니다!</h3>
 
       {/* 캐러셀 : book_board */}
-      <div className="book_board">
+      <div className={styles.book_board}>
         <ArrowComponet onClick={handleClickPrevSlide} leftDir={true} />
-        <div className="book_skill_container">
+        <div className={styles.book_skill_container}>
           {/* 책의 목록들을 보여주는 창 : book_skill_container */}
-          <div className="book_skill_slide" ref={slideRef}>
+          <div className={styles.book_skill_slide} ref={slideRef}>
             {dataList &&
               convertedList.map((e: bookDataProps) => {
                 return <Book key={e.id} bookInfo={e} />;

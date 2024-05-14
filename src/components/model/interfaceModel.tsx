@@ -1,11 +1,13 @@
 interface schoolBookDataProps {
-  id: number;
+  id?: number;
+  // 알라딘 API에는 존재하지 않음
   title: string;
   author: string;
   publisher: string;
   cover: string;
 
-  isbn?: number;
+  // 알라딘은 string
+  isbn?: number | string;
   publisherYear?: number;
   classNo?: number;
   // 621.3192
@@ -55,6 +57,12 @@ export interface reviewType {
   id: string | number;
   starRate: number;
   review: string;
+}
+
+export interface navItemType {
+  idx: number;
+  tagId: string;
+  item: string;
 }
 
 export type loginFormType = {

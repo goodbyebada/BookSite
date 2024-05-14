@@ -1,4 +1,4 @@
-export function api() {
+export function dummyApi() {
   const result = {
     version: "20131101",
     logo: "http://image.aladin.co.kr/img/header/2011/aladin_logo_new.gif",

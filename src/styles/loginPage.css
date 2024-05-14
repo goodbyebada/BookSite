@@ -25,12 +25,13 @@
 }
 
 /* input {
-    background-color: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    width: 100%;
-  } */
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+  ;
+} */
 
 .login {
   background: #eee;
@@ -53,6 +54,7 @@
   box-shadow: -5px -5px 10px #fff, 5px 5px 8px #babebc;
   text-decoration-line: none;
 }
+
 .form_btn:active {
   box-shadow: inset 1px 1px 2px #babebc, inset -1px -1px 2px #fff;
 }

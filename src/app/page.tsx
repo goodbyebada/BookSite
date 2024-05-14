@@ -1,4 +1,5 @@
 import MainPage from "../components/component/mainPage";
+import HeaderWrap from "@components/containers/headerWrap";
 
 export default async function Home() {
   return (

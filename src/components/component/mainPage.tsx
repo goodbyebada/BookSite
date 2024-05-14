@@ -6,36 +6,26 @@ import HeaderWrap from "@components/containers/headerWrap";
 
 import DropDownContainer from "@components/containers/searchBox/dropDownContainer";
 import SearchBar from "@components/containers/book/searchBar";
+import styles from "@styles/book.module.css";
+import SearchBoxWrapper from "@components/containers/searchBox/SearchBoxWrapper";
 
 // 첫화면
 export default function MainPage() {
+  console.log("This is MainPage");
   return (
-    <>
-      <HeaderWrap />
-
-      <main className="flex min-h-screen flex-col items-center justify-between">
-        <div className="BooksDiv">
-          <div className="introHeader">
-            <h2> MAIN PAGE </h2>
-
-            <div
-              className="d-flex justify-content-center flex-row"
-              id="search_bar"
-            >
-              <DropDownContainer />
-              <SearchBar />
-            </div>
-          </div>
-
-          <div className="SetOfBooks">
-            <ShowBooks />
-            <ShowBooks />
-            <ShowBooks />
-            <ShowBooks />
-            <ShowBooks />
-          </div>
+    <main className="flex flex-col items-center justify-between">
+      <div className={styles.BooksDiv}>
+        <div className={styles.introHeader}>
+          <SearchBoxWrapper styles={styles}>
+            {/* introHeader 높이 고정  */}
+            <DropDownContainer />
+            <SearchBar />
+          </SearchBoxWrapper>
         </div>
-      </main>
-    </>
+
+        <ShowBooks />
+        <ShowBooks />
+      </div>
+    </main>
   );
 }

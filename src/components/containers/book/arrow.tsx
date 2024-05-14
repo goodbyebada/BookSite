@@ -10,12 +10,13 @@ export default function ArrowComponet({
   onClick: MouseEventHandler;
   leftDir: boolean;
 }) {
-  const leftImg = <img src={leftArrow.src}></img>;
-  const rightImg = <img src={rightArrow.src}></img>;
-
   return (
-    <div onClick={onClick} className="swiper test_ui">
-      {leftDir ? leftImg : rightImg}
+    <div onClick={onClick} className="d-flex justify-content-center">
+      <img
+        className="w-25 h-25"
+        src={`${leftDir ? leftArrow.src : rightArrow.src}`}
+        // src={` ${leftArrow.src}`}
+      ></img>
     </div>
   );
 }

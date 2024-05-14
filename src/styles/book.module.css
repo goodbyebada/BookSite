@@ -1,18 +1,17 @@
 .book_recommand_list {
-  border: solid #32a1ce 10px;
+  /* border: solid #32a1ce 10px; */
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 .book_board {
   position: relative;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-around; */
-
   align-items: center;
 
   /* height: 20%; */
   width: 100%;
-  /* padding: 5px 0px; */
 }
 
 .main_content_container {
@@ -25,6 +24,7 @@
   display: flex;
   align-items: center;
   /* 중앙정렬 */
+  justify-content: space-around;
 
   height: 100%;
   width: 100%;
@@ -37,46 +37,10 @@
 .book_skill_slide {
   position: relative;
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-
-  height: 100%;
-  /* width: 100%; */
-
-  /* gap: 12px; */
-  border: solid pink 10px;
-}
-
-.test_ui {
-  background-color: violet;
-  border: solid mintcream 10px;
-}
-
-/*책 이미지 정렬*/
-
-.BooksDiv {
+  justify-content: space-between;
   height: 100%;
   width: 100%;
-}
-
-.BooksDiv .introHeader {
-  font-size: x-large;
-  text-align: center;
-  padding-top: 75px;
-  width: 100px;
-}
-
-.singleBook {
-  display: flex; /* 요소를 가로로 정렬하기 위해 Flexbox 레이아웃을 사용 */
-  /* text-align: center;s */
-
-  /* height: 100%; */
-  /* width: 100%; */
-
-  flex-direction: column;
-  background-color: rebeccapurple;
-  text-decoration-line: none;
-  box-sizing: content-box;
+  border: solid rgb(143, 186, 243) 10px;
 }
 
 .singleBook .book_image {
@@ -85,7 +49,21 @@
 }
 
 .singleBook img {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 100%;
   box-sizing: content-box;
+}
+
+/*책 이미지 정렬*/
+
+.BooksDiv .introHeader {
+  font-size: x-large;
+  text-align: center;
+  padding-top: 75px;
+  height: 400px;
+  background-color: rgb(242, 252, 252);
 }
 
 .thumbs {

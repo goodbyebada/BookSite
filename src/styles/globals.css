@@ -1,8 +1,25 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-* {
+
+/* html, */
+body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+
+  /* width: 100%;  */
+  /* height: 100%;
+  /* overflow-x: hidden; */
+  /* 수평 스크롤 방지 */
+}
+
+.test_ui {
+  background-color: var(--bs-blue);
+  border: solid mintcream 10px;
+}
+
+body {
+  background-color: #f9f3cc;
+  /* padding-top: 75px; */
+  /*헤더를 위 */
 }
 
 ul {
@@ -11,14 +28,6 @@ ul {
 
 button {
   color: var(--bs-blue);
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-  background-color: #f9f3cc;
-  /* padding-top: 75px; */
-  /*헤더를 위 */
 }
 
 a {
@@ -44,17 +53,16 @@ a {
   align-items: center;
 }
 
-.btn {
-  /* background-color: rgb(174, 222, 252); */
-}
-
 .header {
   z-index: 10;
   /* position: sticky; */
   position: fixed;
   top: 0;
+  /* width: 100vw; */
+  box-sizing: border-box;
+
   backdrop-filter: blur(5px);
-  background-color: rgba(134, 182, 246, 0.7);
+  background-color: var(--bs-blue);
 }
 
 .header_test {
@@ -63,6 +71,12 @@ a {
   height: 300px;
   backdrop-filter: blur(5px);
   background-color: rgba(134, 182, 246, 0.7);
+}
+
+.singleBook {
+  width: 30%;
+  box-sizing: content-box;
+  /* pa */
 }
 
 nav {
@@ -124,8 +138,8 @@ ul {
 .swiper {
   position: sticky;
 }
-@media screen and (max-width: 1024px) {
+/* @media screen and (max-width: 1024px) {
   .tab_content {
     padding: 0 24px;
   }
-}
+} */

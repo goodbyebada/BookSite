@@ -8,26 +8,36 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-export default function HeaderWrap() {
-  const router = useRouter();
+export default function HeaderWrap({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [click, setClicked] = useState(false);
+  const onClick = () => {
+    setClicked(!click);
+  };
+  console.log("Header Wrap Reder");
   return (
     <>
-      <nav className="header ">
-        <div className="d-flex flex-row justify-content-between">
-          <Link className="p-3 navbar-brand bg-white" href={"/"}>
+      <nav className={`header`}>
+        <div className="d-flex text-white flex-row justify-content-between">
+          <Link className="p-3 navbar-brand" href={"/"}>
             HOME
           </Link>
           <ul className="ms-auto">
-            <Link className="p-3 nav-link" href="/loginPage">
+            <Link onClick={onClick} className="p-3 nav-link" href="/loginPage">
               Login
             </Link>
-            <Link className=" p-3 nav-link" href="#">
+            <Link className=" p-3 pr-3 nav-link" href="#">
               Profile
             </Link>
           </ul>
         </div>
       </nav>
+      {children}
     </>
   );
 }
