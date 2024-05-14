@@ -2,28 +2,27 @@
 
 import React, { useEffect, useState } from "react";
 import ShowBooks from "@components/containers/book/showBooks";
-import HeaderWrap from "@components/containers/headerWrap";
-
-import DropDownContainer from "@components/containers/box/searchBox/dropDownContainer";
-import SearchBar from "@components/containers/book/searchBar";
+import { schoolBookDataProps } from "@components/model/interfaceModel";
 import styles from "@styles/book.module.css";
-import SearchBoxWrapper from "@components/containers/box/searchBox/SearchBoxWrapper";
 
+// import schoolBookDataProps from
 // 첫화면
-export default function MainPage() {
+export default function MainPage({
+  dataList,
+}: {
+  dataList: schoolBookDataProps[];
+}) {
   console.log("This is MainPage");
   return (
     <main className="flex flex-col items-center justify-between">
       <div className={styles.BooksDiv}>
-        <div className={styles.introHeader}>
+        {/* <div className={styles.introHeader}>
           <SearchBoxWrapper styles={styles}>
-            {/* introHeader 높이 고정  */}
             <DropDownContainer />
             <SearchBar />
           </SearchBoxWrapper>
-        </div>
+        </div> */}
 
-        <ShowBooks />
         <ShowBooks />
       </div>
     </main>

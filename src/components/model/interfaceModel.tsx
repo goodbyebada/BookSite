@@ -1,4 +1,14 @@
-interface schoolBookDataProps {
+export interface Book {
+  ID: number;
+  TITLE: string;
+  AUTHOR: string;
+  PUBLISHER: string;
+  PUBLISH_YEAR: string | number;
+  CLASS_NO: number;
+  ISBN: number;
+}
+
+export interface schoolBookDataProps {
   id?: number;
   // 알라딘 API에는 존재하지 않음
   title: string;

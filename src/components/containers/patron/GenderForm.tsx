@@ -1,11 +1,10 @@
-// GenderForm.tsx
 import React, { useState } from "react";
 
 interface GenderFormProps {
   onChange: (data: any) => void;
 }
 
-const GenderForm: React.FC<GenderFormProps> = ({ onChange }) => {
+const GenderForm = ({ onChange }: GenderFormProps) => {
   const [gender, setGender] = useState<string>("");
 
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

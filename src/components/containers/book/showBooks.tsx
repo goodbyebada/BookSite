@@ -1,7 +1,6 @@
 "use client";
 
 import Book from "./book";
-import { dummyApi } from "../../../data/dummyApi";
 import { bookDataProps } from "@components/model/interfaceModel";
 import { useState } from "react";
 import { useRef } from "react";
@@ -10,8 +9,12 @@ import ArrowComponet from "./arrow";
 import { externalTypeData } from "@components/model/interfaceModel";
 import styles from "@styles/book.module.css";
 
-export default function ShowBooks() {
-  let dataList: externalTypeData[] = dummyApi();
+export default function ShowBooks({
+  dataList,
+}: {
+  dataList: schoolBookDataProps[];
+}) {
+  // let dataList: externalTypeData[] = dummyApi();
 
   return (
     <>
