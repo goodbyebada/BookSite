@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import HeaderWrap from "@components/containers/headerWrap";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 import { Suspense } from "react";
 import NavigationEvents from "@components/navigation-events";
 

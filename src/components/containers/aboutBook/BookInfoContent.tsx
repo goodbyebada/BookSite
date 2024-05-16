@@ -1,13 +1,9 @@
 "use client";
 import SingleBook from "@components/containers/book/singleBook";
-import { bookDataProps } from "@components/model/interfaceModel";
+import { BookItem } from "@components/model/interfaceModel";
 import DetailContent from "./DetailContent";
 
-export default function BookInfoContent({
-  bookData,
-}: {
-  bookData: bookDataProps;
-}) {
+export default function BookInfoContent({ bookData }: { bookData: BookItem }) {
   // 왜 되냐
   console.log("BookInfoContent render");
   return (

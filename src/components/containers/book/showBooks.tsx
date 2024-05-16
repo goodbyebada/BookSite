@@ -106,3 +106,12 @@ export default function ShowBooks({ dataList }: { dataList: ItemInfo[] }) {
     </div>
   );
 }
+
+// {dataList.map((e, index) => {
+//   return (
+//     <AboutBookTemplate
+//       id={index}
+//       bookInfo={returnSingleBookItem(e, index)}
+//     />
+//   );
+// })}

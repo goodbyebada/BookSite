@@ -35,12 +35,12 @@
 
 /**
  *
- * @param apiResponse Data[] type의 response
+ * @param apiResponse Data[] type의 response map으로 줘 하나의 Data
  * @param index index 번째, 순서
  * @returns  한 책의  BookItem
  */
-export function returnSingleBookItem(apiResponse: Data[], index: number) {
-  const singleBookItem: BookItem = apiResponse[index].item[0];
+export function returnSingleBookItem(apiResponse: Data, index: number) {
+  const singleBookItem: BookItem = apiResponse.item[0];
   return singleBookItem;
 }
 

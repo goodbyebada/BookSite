@@ -1,78 +1,62 @@
 "use client";
 
-import { inputData } from "@components/model/interfaceModel";
+import { returnSingleBookItem } from "@components/model/interfaceModel";
 import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import AboutBookTemplate from "@components/component/AboutBookTemplate";
 
 const dummyApiUrl = `https://bc87b101-4a86-4419-a9e4-2648ec0bde58.mock.pstmn.io/getBookInfo`;
 // const apiURL = "https://www.aladin.co.kr/ttb/api";
 
-export const requestBaseUrl = dummyApiUrl;
+const requestBaseUrl = dummyApiUrl;
 import { Data } from "@components/model/interfaceModel";
+import MainPage from "@components/component/MainPage";
 
 const BookList = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   const [url, setUrl] = useState("");
-  const [data, setData] = useState<Data[]>([]);
+  const [datalist, setData] = useState<Data[]>([]);
+
+  // useEffect(() => {
+  //   const params = decodeURI(`${searchParams}`);
+
+  //   setUrl(requestBaseUrl);
+  // }, [searchParams]);
 
   useEffect(() => {
     const params = decodeURI(`${searchParams}`);
 
-    setUrl(requestBaseUrl + "?" + params);
-
-    // You can now use the current URL
-    // ...
-  }, [searchParams]);
-
+    fetch(requestBaseUrl + "?" + params)
+      .then((response) => {
+        return response.json(); // JSON 데이터를 반환하는 프로미스
+      })
+      .then((bookData) => {
+        console.log(bookData); // JSON 데이터를 로깅
+        setData(bookData);
+      })
+      .catch((error) => {
+        console.error("Fetch Error:", error); // 에러 발생 시 처리
+      });
+    // fetchData();
+  }, []);
   useEffect(() => {
-    const fetchData = async (): Promise<Data[]> => {
-      try {
-        const response = await fetch(url);
+    console.log("datalist");
+    console.log(datalist);
 
-        if (!response.ok) {
-          throw new Error(
-            `Failed to fetch data with status ${response.status}`
-          );
-        }
-        const data = await response.json();
-
-        console.log(data);
-        return data;
-      } catch (error) {
-        console.error("Error during fetch:", error);
-        throw error;
-      }
-    };
-
-    // const data: Data[] = fetchData();
-    // setData(data);
-  }, [url]);
+    datalist.forEach((e) => console.log(e.item[0].title));
+  }, [datalist]);
 
   return (
     <div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div>야호</div>
+      {datalist[0] ? (
+        <MainPage dataList={datalist} />
+      ) : (
+   
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
