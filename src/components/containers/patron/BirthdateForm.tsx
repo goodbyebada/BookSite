@@ -20,6 +20,7 @@ const BirthdateForm = ({ onChange }: BirthdateFormProps) => {
         value={birthdate}
         onChange={handleBirthdateChange}
         placeholder="생년월일을 입력하세요"
+        max="9999-12-31"
       />
     </div>
   );

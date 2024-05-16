@@ -8,11 +8,8 @@ interface SelectOptionProps {
   serverCallback: (value: string) => void;
 }
 
-const SelectOption: React.FC<SelectOptionProps> = ({
-  options,
-  serverValueMap,
-  serverCallback,
-}) => {
+const SelectOption = (props: SelectOptionProps) => {
+  const { options, serverValueMap, serverCallback } = props;
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {

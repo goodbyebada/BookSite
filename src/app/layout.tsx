@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "@styles/globals.css";
 import HeaderWrap from "@components/containers/headerWrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Suspense } from "react";
+import NavigationEvents from "@components/navigation-events";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +22,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <HeaderWrap>{children}</HeaderWrap>
+
+        {/* <Suspense fallback={null}>
+          <NavigationEvents />
+        </Suspense> */}
       </body>
     </html>
   );

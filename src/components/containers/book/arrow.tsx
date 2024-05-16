@@ -11,12 +11,12 @@ export default function ArrowComponet({
   leftDir: boolean;
 }) {
   return (
-    <div onClick={onClick} className="d-flex justify-content-center">
-      <img
-        className="w-25 h-25"
-        src={`${leftDir ? leftArrow.src : rightArrow.src}`}
-        // src={` ${leftArrow.src}`}
-      ></img>
-    </div>
+    // <div onClick={onClick}>
+    <img
+      onClick={onClick}
+      src={`${leftDir ? leftArrow.src : rightArrow.src}`}
+      // src={` ${leftArrow.src}`}
+    ></img>
+    // </div>
   );
 }

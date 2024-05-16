@@ -13,8 +13,6 @@ export default function BookInfoContent({
   return (
     <div className="mt-500">
       <div className="Top">
-        <div className="Bookpic"></div>
-
         <img src={bookData.cover}></img>
 
         <div className="Details">
@@ -23,8 +21,8 @@ export default function BookInfoContent({
           <p>작가 : {bookData.author}</p>
           <p>출판사: {bookData.publisher}</p>
         </div>
-        <DetailContent content={bookData} />
       </div>
+      <DetailContent content={bookData} />
     </div>
   );
 }

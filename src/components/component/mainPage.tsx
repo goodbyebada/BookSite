@@ -7,24 +7,12 @@ import styles from "@styles/book.module.css";
 
 // import schoolBookDataProps from
 // 첫화면
-export default function MainPage({
-  dataList,
-}: {
-  dataList: schoolBookDataProps[];
-}) {
+export default function MainPage({ dataList }: { dataList: [] }) {
   console.log("This is MainPage");
   return (
-    <main className="flex flex-col items-center justify-between">
-      <div className={styles.BooksDiv}>
-        {/* <div className={styles.introHeader}>
-          <SearchBoxWrapper styles={styles}>
-            <DropDownContainer />
-            <SearchBar />
-          </SearchBoxWrapper>
-        </div> */}
-
-        <ShowBooks />
-      </div>
-    </main>
+    <div className={styles.BooksDiv}>
+      {/* [{item: [{title: "", link:""}]}, {item : []}] 을 받아온다 */}
+      <ShowBooks dataList={dataList} />
+    </div>
   );
 }

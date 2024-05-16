@@ -14,8 +14,8 @@ const GenderForm = ({ onChange }: GenderFormProps) => {
   };
 
   return (
-    <div>
-      <label htmlFor="genderSelect">성별 선택:</label>
+    <div className="gender-select">
+      <label htmlFor="genderSelect">성별 선택</label>
       <select id="genderSelect" value={gender} onChange={handleGenderChange}>
         <option value="">성별을 선택하세요</option>
         <option value="F">여자</option>

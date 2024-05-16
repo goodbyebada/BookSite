@@ -1,30 +1,41 @@
-import DetailContent from "@components/containers/aboutBook/DetailContent";
-import BookInfoContent from "@components/containers/aboutBook/BookInfoContent";
-import AboutBookWrapper from "@components/containers/aboutBook/AboutBookWrapper";
-import { dummyApi } from "@data/dummyApi";
 import { useEffect, useState } from "react";
-import { bookDataProps } from "@components/model/interfaceModel";
-export default function AboutBookTemplate({ id }: { id: number }) {
-  console.log("This is About Book Content");
+import AboutBookWrapper from "@components/containers/aboutBook/AboutBookWrapper";
+import BookInfoContent from "@components/containers/aboutBook/BookInfoContent";
+import { result } from "@data/dummyApi";
 
-  const [data, setDataList] = useState<bookDataProps>();
+interface BookData {
+  title: string;
+  author: string;
+  publisher: string;
+  cover: string;
+  isbn: string;
+  isbn13: string;
+  pubDate: string;
+  description: string;
+}
+
+export default function AboutBookTemplate({
+  id,
+  bookInfo,
+}: {
+  id: number;
+  bookInfo: BookData;
+}) {
+  const [data, setDataList] = useState<BookData>(bookInfo);
 
   useEffect(() => {
-    const dummyList = dummyApi();
-    console.log("API 호출");
+    if (!bookInfo) {
+      console.log("API 호출");
 
-    // 알라딘 itemId로 설정
-    console.log(id);
+      // 여기서 API 호출
+      const fetchData = async () => {
+        // const response = await fetch(`/api/book/${id}`);
+        // const result = await response.json();
+      };
 
-    // const testBook = dummyList.filter((e) => e.itemId === Number(id));
-    const testBook = dummyList.filter((e) => e.itemId === id);
-    // 빈공백 반환한다
-    // 오류ㄴ
-    // params에서 id string을 반환해주니까 생긴 오류
-
-    setDataList(testBook[0]);
-  }, []);
-  // API 한번 호출
+      fetchData();
+    }
+  }, [id, bookInfo]);
 
   return (
     <>
@@ -34,9 +45,7 @@ export default function AboutBookTemplate({ id }: { id: number }) {
         ) : (
           <BookInfoContent bookData={data} />
         )}
-        ;
       </AboutBookWrapper>
-      <footer className="p-5">공백 늘리기용</footer>
     </>
   );
 }

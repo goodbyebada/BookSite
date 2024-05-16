@@ -30,14 +30,14 @@ const Department = ({ onChange }: DepartmentProps) => {
   };
 
   return (
-    <div>
+    <div className="department">
       <input
         type="text"
         placeholder="소속을 입력하세요"
         value={inputValue}
         onChange={handleInputChange}
       />
-      <div>
+      <div className="departement-ex">
         {matchedDepartments.map((department, index) => (
           <div key={index} onClick={() => handleDepartmentClick(department)}>
             {department}

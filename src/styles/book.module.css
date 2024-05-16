@@ -1,89 +1,94 @@
 .book_recommand_list {
-  /* border: solid #32a1ce 10px; */
-  box-sizing: border-box;
   padding: 20px;
-}
-
-.book_board {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  /* height: 20%; */
   width: 100%;
+
+  /* box-sizing: border-box; */
 }
 
-.main_content_container {
+.single_book {
+  border: solid 1px;
+}
+
+.book_skill_slide {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
+}
+
+.book_cover {
+  /* width: 100%; */
+  /* height: 100%; */
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.book_skill_container {
+.book-cover img {
+  max-width: 100%;
+  max-height: 100%;
+  /* object-fit: contain; */
+}
+
+/* 캐러셀 임시 주석 처리함 */
+/* .book_skill_container {
   position: relative;
   display: flex;
   align-items: center;
-  /* 중앙정렬 */
   justify-content: space-around;
 
   height: 100%;
   width: 100%;
   overflow: hidden;
-  /* 넘치면 가린다  */
 
   border: solid midnightblue 10px;
+} */
+
+/*책 이미지 정렬*/
+
+/* 433px 이하 화면에서 이미지 크기 조절 */
+@media (max-width: 501px) {
+  .book_skill_slide {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.book_skill_slide {
+@media (max-width: 891px) {
+  .book_skill_slide {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .book_skill_slide {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 캐러셀 미구현  */
+/* .book_board {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.book_board img {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 30px;
+  margin: 10px;
+
+  align-items: center;
+} */
+
+/* .book_skill_slide {
   position: relative;
   display: flex;
   justify-content: space-between;
   height: 100%;
   width: 100%;
   border: solid rgb(143, 186, 243) 10px;
-}
-
-.singleBook .book_image {
-  height: 50%;
-  padding-right: 100px;
-}
-
-.singleBook img {
-  position: absolute;
-  top: 10px;
-  width: 100%;
-  height: 100%;
-  box-sizing: content-box;
-}
-
-/*책 이미지 정렬*/
-
-.BooksDiv .introHeader {
-  font-size: x-large;
-  text-align: center;
-  padding-top: 75px;
-  height: 400px;
-  background-color: rgb(242, 252, 252);
-}
-
-.thumbs {
-  height: 30px;
-  width: 40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.thumbs > * {
-  height: 30px;
-  width: 80%;
-  display: flex;
-  justify-content: space-around;
-}
-
-.thumbs #up :hover {
-  border-color: red;
-}
-
-/* test */
+} */

@@ -7,8 +7,8 @@ import { useRef, useEffect } from "react";
 
 export const navItemList: navItemType[] = [
   { idx: 0, tagId: "description", item: "책 소개" },
-  { idx: 1, tagId: "list", item: "리뷰" },
-  { idx: 2, tagId: "review", item: "유사한 책" },
+  { idx: 1, tagId: "category", item: "카테고리" },
+  { idx: 2, tagId: "subInfo ", item: "기본 정보" },
 ];
 
 export default function DetailNav({

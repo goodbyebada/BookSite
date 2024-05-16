@@ -1,11 +1,95 @@
-export interface Book {
-  ID: number;
-  TITLE: string;
-  AUTHOR: string;
-  PUBLISHER: string;
-  PUBLISH_YEAR: string | number;
-  CLASS_NO: number;
-  ISBN: number;
+/**
+ * key Item
+ * value List
+ *
+ * 이 List는 하나의 객체만 가지고 있다.
+ * 이 List.length === 1
+ *
+ * List는 Data type의 한 객체를 가지고 있다.
+ * 즉, Data 접근할거면
+ *
+ *
+ * 서버에 Get 요청시,
+ * { "item": []} []
+ * 을 가져온다.
+ *
+ *
+ * Ex) [ { "item": []} , { "item": []} , { "item": []} ]
+ * 이 list가 서버에서 오는 값이다.
+ *
+ *
+ * { "item": []} => Data
+ * [ { "item": []} , { "item": []} , { "item": []} ] => 최종 api Response
+ * Api Response 는 Data[] 형식으로 온다.
+ *
+ *
+ *
+ * response는 배열이니까
+ * ApiResponse : Data[]
+ * ApiResponse[0].item[0]
+ * ApiResponse[1].item[0]
+ * 무조건 item[0] -> BookItem
+ *
+ *
+ */
+
+/**
+ *
+ * @param apiResponse Data[] type의 response
+ * @param index index 번째, 순서
+ * @returns  한 책의  BookItem
+ */
+export function returnSingleBookItem(apiResponse: Data[], index: number) {
+  const singleBookItem: BookItem = apiResponse[index].item[0];
+  return singleBookItem;
+}
+
+export interface inputData {
+  gender: string;
+  patron_type: number;
+  birthdate: number;
+  department: string;
+}
+
+export interface BookItem {
+  title: string;
+  link: string;
+  author: string;
+  pubDate: string;
+  description: string;
+  isbn: string;
+  isbn13: string;
+  mallType: string;
+  cover: string;
+  categoryId: number;
+  categoryName: string;
+  publisher: string;
+  adult: boolean;
+  fixedPrice: boolean;
+  subInfo: {
+    subTitle: string;
+    originalTitle: string;
+    itemPage: number;
+  };
+  categoryIdList: {
+    categoryId: number;
+    categoryName: string;
+  }[];
+}
+
+export interface Data {
+  item: BookItem[];
+}
+
+interface SubInfo {
+  subTitle: string;
+  originalTitle: string;
+  itemPage: number;
+}
+
+interface Category {
+  categoryId: number;
+  categoryName: string;
 }
 
 export interface schoolBookDataProps {

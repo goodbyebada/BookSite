@@ -1,31 +1,65 @@
-@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/* @import "../../node_modules/bootstrap//dist/css/bootstrap-grid.min.css.map"; */
 
-/* html, */
+html {
+  margin: 0;
+  padding: 0;
+  /* height: 100vh; */
+}
+
 body {
   margin: 0;
   padding: 0;
-
-  /* width: 100%;  */
-  /* height: 100%;
-  /* overflow-x: hidden; */
-  /* 수평 스크롤 방지 */
+  height: 100%;
+  background-color: rgb(242, 252, 252);
 }
 
-/* 내가 지정 */
-.mt-500 {
-  margin-top: 75px;
+main {
+  position: relative;
+  padding-top: 75px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
 }
 
-.test_ui {
-  background-color: var(--bs-blue);
-  border: solid mintcream 10px;
-  height: 500px;
+/* select Form */
+.select-template {
+  /* margin-top: 75px; */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.select-template > div {
+  padding: 20px;
 }
 
-body {
-  background-color: #f9f3cc;
-  /* padding-top: 75px; */
-  /*헤더를 위 */
+.select-template > button {
+  /* bottom: 30; */
+}
+
+.select-template > div > input {
+  width: 100%;
+}
+
+.select-template > div > select {
+  width: 100%;
+}
+
+.select-template > .gender-select {
+  /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.department {
+  height: 40%;
+}
+
+.departement-ex {
+  z-index: 99;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 ul {
@@ -41,24 +75,6 @@ a {
   color: black;
 }
 
-/* font size 고정해놓음 */
-.ui {
-  background-color: rgb(174, 222, 252);
-  color: black;
-  border-radius: 5px;
-  border-style: none;
-  width: 100px;
-  text-align: center;
-
-  display: flex;
-  height: fit-content;
-
-  font-size: 20px;
-
-  justify-content: center;
-  align-items: center;
-}
-
 .header {
   z-index: 10;
   /* position: sticky; */
@@ -71,20 +87,6 @@ a {
   background-color: var(--bs-blue);
 }
 
-.header_test {
-  position: fixed;
-  top: 0;
-  height: 300px;
-  backdrop-filter: blur(5px);
-  background-color: rgba(134, 182, 246, 0.7);
-}
-
-.singleBook {
-  width: 30%;
-  box-sizing: content-box;
-  /* pa */
-}
-
 nav {
   width: 100%;
   flex-wrap: wrap;
@@ -95,7 +97,6 @@ li {
   display: inline-block;
 }
 
-/*nav list */
 ul {
   margin: 0;
   padding: 0;
@@ -103,14 +104,7 @@ ul {
   justify-content: flex-end;
 }
 
-/* 구분을 위한 디자인 */
-.header-wrapper {
-  /* border-style: dotted; */
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-}
-
+/* 드롭다운 css 사용안함 */
 .dropDown:nth-child(1) {
   background-color: red;
 }
