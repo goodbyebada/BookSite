@@ -8,10 +8,7 @@ import SelectTemplate from "@components/component/SelectTemplate";
 export default function Home() {
   return (
     <main>
-      {/* {!submit && <SelectTemplate onSubmit={handleDataSubmit} />} */}
       <SelectTemplate />
-
-      {/* {submit && <MainPage dataList={mainPageData} />} */}
     </main>
   );
 }

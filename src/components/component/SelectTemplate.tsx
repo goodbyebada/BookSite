@@ -3,15 +3,19 @@ import GenderForm from "@components/containers/patron/GenderForm";
 import PatronTypeSelector from "@components/containers/patron/EducationSelector";
 import BirthdateForm from "@components/containers/patron/BirthdateForm";
 import Department from "@components/containers/patron/Department";
-import { dummyApiUrl } from "@data/dummyApiSource";
 import { useRouter } from "next/navigation";
 import { inputData } from "@components/model/interfaceModel";
-import Link from "next/link";
 
 const testData = {
   gender: "F",
   patron_type: 1,
   birthdate: 19990909,
+  department: "컴퓨터학부",
+};
+const birthTestData = {
+  gender: "F",
+  patron_type: 1,
+  birthdate: 0,
   department: "컴퓨터학부",
 };
 
@@ -22,42 +26,27 @@ const fistData = {
   department: "",
 };
 
+// Test를 위해
+const firstSetData = testData;
+
+const routeUrl = "/bookList";
+
 const SelectTemplate = () => {
-  const [submit, setSubmit] = useState(false);
-  const [formData, setFormData] = useState<inputData>(testData);
+  const [formData, setFormData] = useState<inputData>(firstSetData);
   const router = useRouter();
 
-  const returnQuery = (data: inputData) => {
+  /**
+   *
+   * @param data user 정보  { gender, patron_type, birthdate, department }
+   * @returns queryString
+   */
+  const returnQueryString = (data: inputData) => {
     const { gender, patron_type, birthdate, department } = data;
-    const query = `?gender=${data.gender}&patron-type=${data.patron_type}&birthdate=${data.birthdate}&department=${data.department}`;
-    // return {
-    //   gender: gender,
-    //   patron_type: patron_type,
-    //   birthdate: birthdate,
-    //   department: department,
-    // };
-    return query;
+    const queryString = `gender=${gender}&patron-type=${patron_type}&birthdate=${birthdate}&department=${department}`;
+    return queryString;
   };
 
-  const fetchData = async (data: inputData) => {
-    const query = `?gender=${data.gender}&patron-type=${data.patron_type}&birthdate=${data.birthdate}&department=${data.department}`;
-    const url = dummyApiUrl + query;
-
-    try {
-      // const response = await fetch(url);
-      // const result = await response.json();
-      // console.log(result);
-      const result = url;
-
-      return result;
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      throw new Error("Error fetching data");
-    }
-  };
-
-  const handleSubmit = async () => {
-    // 모든 필드가 채워졌는지 확인
+  const checkSubmitCondition = () => {
     const isFormComplete = Object.values(formData).every(
       (field) => field !== ""
     );
@@ -67,30 +56,17 @@ const SelectTemplate = () => {
       return;
     }
 
-    try {
-      // 모든 필드가 채워졌다면 백엔드로 데이터를 보냄
-      const response = await fetchData(formData);
-      // fetchData가 완료된 후에 setSubmit 실행
-      setSubmit(!submit);
-      router.push("/bookList");
-
-      // 응답을 받았고, 응답에 따라 페이지 이동을 처리
-    } catch (error) {
-      console.error("Error handling form submission:", error);
-      // 오류가 발생한 경우에 대한 처리
-    }
+    // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
+    const queryString = returnQueryString(formData);
+    router.push(routeUrl + "?" + queryString);
   };
 
-  // formDatar가 재렌더링된다면 fetchgksek.
-
   const handleInputChange = (fieldName: string, value: string) => {
-    setFormData((prevData: any) => ({
+    setFormData((prevData: inputData) => ({
       ...prevData,
       [fieldName]: value,
     }));
   };
-
-  const query = returnQuery(formData);
 
   return (
     <div className="select-template">
@@ -109,24 +85,11 @@ const SelectTemplate = () => {
         type="button"
         className="btn btn-primary"
         onClick={() => {
-          handleSubmit();
+          checkSubmitCondition();
+          // input란 체크 후 이동
         }}
       >
         제출
-      </button>
-
-      <Link className="btn btn-primary m-3" as="/bookList" href={query}>
-        LinkBtn
-      </Link>
-
-      <button
-        type="button"
-        onClick={() => {
-          router.push(query);
-          // router.push("/bookList");
-        }}
-      >
-        queryBtn
       </button>
     </div>
   );

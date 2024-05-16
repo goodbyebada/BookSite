@@ -1,11 +1,15 @@
 "use client";
 
+//
+
 import { useEffect } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 export default function NavigationEvents() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const params = `${searchParams}`;
 
   useEffect(() => {
     const url = `${pathname}?${searchParams}`;
@@ -16,5 +20,13 @@ export default function NavigationEvents() {
     // ...
   }, [pathname, searchParams]);
 
-  return null;
+  return (
+    <>
+      {params === "" ? (
+        <div>noen</div>
+      ) : (
+        <div style={{ backgroundColor: "red", height: "500px" }}>INFO</div>
+      )}
+    </>
+  );
 }

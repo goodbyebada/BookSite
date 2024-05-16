@@ -23,7 +23,14 @@ export default function RootLayout({
       <body className={inter.className}>
         <HeaderWrap>{children}</HeaderWrap>
 
-        {/* <Suspense fallback={null}>
+        {/* 네비게이션과 같이 url에 따라 바뀌거나, 고정 */}
+        {/* <Suspense
+          fallback={
+            <div style={{ backgroundColor: "red", height: "500px" }}>
+              Loading...
+            </div>
+          }
+        >
           <NavigationEvents />
         </Suspense> */}
       </body>

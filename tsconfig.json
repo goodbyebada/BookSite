@@ -33,7 +33,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/component/index.ts",
-    "src/app/testApi/getData.tsx",
     "/Applications/Postman.app"
   ],
   "exclude": ["node_modules"]
