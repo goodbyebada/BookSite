@@ -1,62 +1,49 @@
 "use client";
 
-import Link from "next/link";
-import { ItemInfo } from "@components/model/interfaceModel";
+import { BookItem } from "@components/model/interfaceModel";
 import styles from "@styles/book.module.css";
+import { Data } from "@components/model/interfaceModel";
 
-interface BookData {
-  title: string;
-  author: string;
-  publisher: string;
-  cover: string;
-  isbn: string;
-  isbn13: string;
-  pubDate: string;
-  description: string;
-}
+/**
+ *
+ * @param param0
+ * @returns BookList 보여주는 페이지의 singleBook
+ */
 
 export default function Book({
-  id,
   bookInfo,
+  clickEvent,
 }: {
-  id: number;
-  bookInfo: ItemInfo;
+  bookInfo: Data;
+  clickEvent: (bookItem: BookItem) => void;
 }) {
-  const { title, author, publisher, cover }: ItemInfo = bookInfo;
+  const { title, author, publisher, cover }: BookItem = bookInfo.item[0];
+  //데이터 구조
+
   const titles = title.split("-");
   const words = author.split(",");
 
   return (
-    <div className={styles.single_book}>
-      <Link
-        href={{
-          pathname: `/aboutBook/${id}`,
-          query: {
-            title,
-            author,
-            publisher,
-            cover,
-            isbn: bookInfo.isbn,
-            isbn13: bookInfo.isbn13,
-            pubDate: bookInfo.pubDate,
-            description: bookInfo.description,
-          },
-        }}
-        as={`/aboutBook/${id}`}
-      >
-        <div id={styles.book_cover}>
-          <img src={cover} alt={titles[0]} />
-        </div>
+    <div
+      className={styles.single_book}
+      onClick={() => {
+        clickEvent(bookInfo.item[0]);
+      }}
+    >
+      {/* <div className={styles.single_book}> */}
+      <div id={styles.book_cover}>
+        <img src={cover} alt={titles[0]} />
+      </div>
 
-        <div className="fw-bold" style={{ fontSize: "1.5rem" }}>
-          <p>{titles[0]}</p>
-        </div>
-        <p>{titles[1]}</p>
-        <div className="d-flex flex-row w-100">
-          <span className="pe-3">{words[0]}</span>
-          <span>{words[1]}</span>
-        </div>
-      </Link>
+      <div className="fw-bold" style={{ fontSize: "1.5rem" }}>
+        <p>{titles[0]}</p>
+      </div>
+      <p>{titles[1]}</p>
+      <div className="d-flex flex-row w-100">
+        <span className="pe-3">{words[0]}</span>
+        <span>{words[1]}</span>
+      </div>
+      {/* </Link> */}
     </div>
   );
 }

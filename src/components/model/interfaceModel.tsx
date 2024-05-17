@@ -44,6 +44,19 @@ export function returnSingleBookItem(apiResponse: Data, index: number) {
   return singleBookItem;
 }
 
+/**
+ *
+ * @param obj 객체
+ * @returns 빈 객체라면 true
+ */
+export function isEmptyObj(obj: Object | null) {
+  if (obj?.constructor === Object && Object.keys(obj).length === 0) {
+    return true;
+  }
+
+  return false;
+}
+
 export interface inputData {
   gender: string;
   patron_type: number;

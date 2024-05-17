@@ -6,33 +6,57 @@ import Department from "@components/containers/patron/Department";
 import { useRouter } from "next/navigation";
 import { inputData } from "@components/model/interfaceModel";
 
-const testData = {
-  gender: "F",
-  patron_type: 1,
-  birthdate: 19990909,
-  department: "컴퓨터학부",
-};
-const birthTestData = {
-  gender: "F",
-  patron_type: 1,
-  birthdate: 0,
-  department: "컴퓨터학부",
-};
+/**
+ * Test를 위한 Form
+ * @returns
+ */
+function setInputForm(key: keyof typeof testDataObj) {
+  const EMPTY_NUMBER = 0;
+  const EMPTY_STRING = "";
 
-const fistData = {
-  gender: "",
-  patron_type: 0,
-  birthdate: 0,
-  department: "",
-};
+  const TEST_BIRTH = 19991111;
 
-// Test를 위해
-const firstSetData = testData;
+  enum Department {
+    ComputerScience = "컴퓨터학부",
+    Business = "경영학부",
+  }
 
-const routeUrl = "/bookList";
+  const testDataObj: { [key: string]: inputData } = {
+    CSdata: {
+      gender: "F",
+      patron_type: 1,
+      birthdate: TEST_BIRTH,
+      department: Department.ComputerScience,
+    },
+
+    BSdata: {
+      gender: "F",
+      patron_type: 1,
+      birthdate: TEST_BIRTH,
+      department: Department.Business,
+    },
+
+    SET: {
+      gender: EMPTY_STRING,
+      patron_type: EMPTY_NUMBER,
+      birthdate: EMPTY_NUMBER,
+      department: EMPTY_STRING,
+    },
+  };
+
+  return testDataObj[key];
+}
+
+const bookList = "/bookList";
+const getBookInfo = "/getBookInfo";
+const routeUrl = bookList;
 
 const SelectTemplate = () => {
-  const [formData, setFormData] = useState<inputData>(firstSetData);
+  const [formData, setFormData] = useState<inputData>(
+    setInputForm("CSdata")
+    // setInputForm("BSdata")
+    // setInputForm("SET")
+  );
   const router = useRouter();
 
   /**
@@ -42,6 +66,10 @@ const SelectTemplate = () => {
    */
   const returnQueryString = (data: inputData) => {
     const { gender, patron_type, birthdate, department } = data;
+
+    console.log(gender);
+    console.log(typeof gender);
+
     const queryString = `gender=${gender}&patron-type=${patron_type}&birthdate=${birthdate}&department=${department}`;
     return queryString;
   };
@@ -58,6 +86,7 @@ const SelectTemplate = () => {
 
     // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
     const queryString = returnQueryString(formData);
+
     router.push(routeUrl + "?" + queryString);
   };
 
@@ -90,6 +119,17 @@ const SelectTemplate = () => {
         }}
       >
         제출
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => {
+          checkSubmitCondition();
+          // input란 체크 후 이동
+        }}
+      >
+        test
       </button>
     </div>
   );

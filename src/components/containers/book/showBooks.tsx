@@ -1,10 +1,13 @@
 import Book from "./book";
-import ArrowComponet from "./arrow";
-import styles from "@styles/book.module.css";
-import { ItemInfo } from "@components/model/interfaceModel";
-import { useState, useRef, useEffect } from "react";
 
-export default function ShowBooks({ dataList }: { dataList: ItemInfo[] }) {
+import styles from "@styles/book.module.css";
+
+import { useState, useRef, useEffect, use } from "react";
+import { BookItem, Data } from "@components/model/interfaceModel";
+import { isEmptyObj } from "@components/model/interfaceModel";
+import AboutBookTemplate from "@components/component/AboutBookTemplate";
+
+export default function ShowBooks({ dataList }: { dataList: Data[] }) {
   if (!dataList) {
     return null;
   }
@@ -60,25 +63,74 @@ export default function ShowBooks({ dataList }: { dataList: ItemInfo[] }) {
     }
   }, [currentSlide]);
 
+  // 위에는 캐러셀
+
+  /**
+   * 모달 기능
+   */
+  const [isOpenDetail, setOpenDetail] = useState(false);
+
+  const [selectBook, setSelectBook] = useState<BookItem | null>(null);
+
+  const selectBookEvent = (bookItem: BookItem) => {
+    if (isEmptyObj(bookItem)) {
+      return;
+    }
+    setSelectBook(bookItem);
+  };
+
+  const cancleSelectBookEvent = () => {
+    setSelectBook(null);
+  };
+
+  useEffect(() => {
+    // console.log(isEmptyObj(selectBook));
+    console.log(selectBook);
+    console.log("selectBook값 변동");
+  }, [selectBook]);
+
   return (
     <div className={styles.book_recommand_list}>
       <h3>추천합니다!</h3>
 
       {/* <div className={styles.book_skill_container}> */}
-      <div className={styles.book_skill_slide} ref={slideRef}>
-        {dataList.map((data, idx) => (
-          <Book
-            id={parseInt(data.item[0].isbn)}
-            key={idx}
-            bookInfo={data.item[0]}
-          />
-        ))}
-      </div>
-      {/* </div > */}
 
-      {/* 캐러셀미구현 */}
+      {selectBook ? (
+        <AboutBookTemplate
+          bookInfo={selectBook}
+          clickEvent={cancleSelectBookEvent}
+        />
+      ) : (
+        <div className={styles.book_skill_slide} ref={slideRef}>
+          {dataList.map((data, idx) => (
+            <Book
+              key={idx}
+              bookInfo={data}
+              clickEvent={(bookItem: BookItem) => selectBookEvent(bookItem)}
+            />
+          ))}
+          {/* BOOLIST */}
+        </div>
+      )}
+    </div>
+  );
+}
 
-      {/* <div className={styles.book_board}>
+// {dataList.map((e, index) => {
+//   return (
+//     <AboutBookTemplate
+//       id={index}
+//       bookInfo={returnSingleBookItem(e, index)}
+//     />
+//   );
+// })}
+
+{
+  /* 캐러셀미구현 */
+}
+
+{
+  /* <div className={styles.book_board}>
         <ArrowComponet onClick={handleClickPrevSlide} leftDir={true} />
         <div className={styles.book_skill_container}>
           <div
@@ -102,16 +154,5 @@ export default function ShowBooks({ dataList }: { dataList: ItemInfo[] }) {
           </div>
         </div>
         <ArrowComponet onClick={handleClickNextSlide} leftDir={false} />
-      </div> */}
-    </div>
-  );
+      </div> */
 }
-
-// {dataList.map((e, index) => {
-//   return (
-//     <AboutBookTemplate
-//       id={index}
-//       bookInfo={returnSingleBookItem(e, index)}
-//     />
-//   );
-// })}

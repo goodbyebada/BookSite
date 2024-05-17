@@ -11,6 +11,9 @@ export const navItemList: navItemType[] = [
   { idx: 2, tagId: "subInfo ", item: "기본 정보" },
 ];
 
+
+
+
 export default function DetailNav({
   scrollRef,
 }: {

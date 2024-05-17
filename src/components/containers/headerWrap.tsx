@@ -38,6 +38,9 @@ export default function HeaderWrap({
         </div>
       </nav>
       {children}
+      <footer style={{ height: "200px", background: "blue", color: "white" }}>
+        Footer
+      </footer>
     </>
   );
 }

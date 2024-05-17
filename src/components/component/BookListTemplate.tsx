@@ -8,10 +8,9 @@ import { Data } from "@components/model/interfaceModel";
 
 import AboutBookTemplate from "./AboutBookTemplate";
 import { returnSingleBookItem } from "@components/model/interfaceModel";
-// import schoolBookDataProps from
+
 // 첫화면
-export default function MainPage({ dataList }: { dataList: Data[] }) {
-  console.log("This is MainPage");
+export default function ShowBookList({ dataList }: { dataList: Data[] }) {
   return (
     <div className={styles.BooksDiv}>
       <ShowBooks dataList={dataList} />

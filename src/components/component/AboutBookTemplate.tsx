@@ -4,11 +4,11 @@ import BookInfoContent from "@components/containers/aboutBook/BookInfoContent";
 import { BookItem } from "@components/model/interfaceModel";
 
 export default function AboutBookTemplate({
-  id,
   bookInfo,
+  clickEvent,
 }: {
-  id: number;
   bookInfo: BookItem;
+  clickEvent: () => void;
 }) {
   const [data, setDataList] = useState<BookItem>(bookInfo);
 
@@ -20,6 +20,7 @@ export default function AboutBookTemplate({
         ) : (
           <BookInfoContent bookData={data} />
         )}
+        <button onClick={clickEvent}>창닫기</button>
       </AboutBookWrapper>
     </>
   );

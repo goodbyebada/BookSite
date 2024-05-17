@@ -5,13 +5,15 @@ import { useSearchParams } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import AboutBookTemplate from "@components/component/AboutBookTemplate";
+import { dummyDataList } from "@data/dummyData";
 
 const dummyApiUrl = `https://bc87b101-4a86-4419-a9e4-2648ec0bde58.mock.pstmn.io/getBookInfo`;
 // const apiURL = "https://www.aladin.co.kr/ttb/api";
 
 const requestBaseUrl = dummyApiUrl;
 import { Data } from "@components/model/interfaceModel";
-import MainPage from "@components/component/MainPage";
+import ShowBookList from "@components/component/BookListTemplate";
+import LoadingComponent from "@components/component/LoadingComponent";
 
 const BookList = () => {
   const pathname = usePathname();
@@ -20,11 +22,11 @@ const BookList = () => {
   const [url, setUrl] = useState("");
   const [datalist, setData] = useState<Data[]>([]);
 
-  // useEffect(() => {
-  //   const params = decodeURI(`${searchParams}`);
+  useEffect(() => {
+    const params = decodeURI(`${searchParams}`);
 
-  //   setUrl(requestBaseUrl);
-  // }, [searchParams]);
+    setUrl(requestBaseUrl);
+  }, [searchParams]);
 
   useEffect(() => {
     const params = decodeURI(`${searchParams}`);
@@ -37,27 +39,28 @@ const BookList = () => {
         console.log(bookData); // JSON 데이터를 로깅
         setData(bookData);
       })
-      .catch((error) => {
-        console.error("Fetch Error:", error); // 에러 발생 시 처리
+      .catch((error) => {})
+      .then((error) => {
+        // 다음 핸들러 실행
+        console.log("==== 더미데이터 호출합니다.");
+        setData(dummyDataList);
       });
-    // fetchData();
-  }, []);
-  useEffect(() => {
-    console.log("datalist");
-    console.log(datalist);
 
-    datalist.forEach((e) => console.log(e.item[0].title));
-  }, [datalist]);
+    /**
+     * 목서버 횟수제한으로 안됨
+     */
+  }, []);
 
   return (
     <div>
       {datalist[0] ? (
-        <MainPage dataList={datalist} />
+        <ShowBookList dataList={datalist} />
       ) : (
-   
-        <div>Loading...</div>
+        <LoadingComponent />
       )}
     </div>
+
+    // <div style={{ height: "100vh", background: "green" }}></div>
   );
 };
 
