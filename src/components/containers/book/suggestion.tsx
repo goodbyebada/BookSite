@@ -1,7 +1,4 @@
-import Link from "next/link";
-import { dataProps } from "./bookLists";
-
-export default function Suggestion(bookData: dataProps) {
+export default function Suggestion() {
   /**
    * 제목
    * 작가

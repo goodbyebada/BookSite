@@ -30,7 +30,6 @@ export default function Book({
         clickEvent(bookInfo.item[0]);
       }}
     >
-      {/* <div className={styles.single_book}> */}
       <div id={styles.book_cover}>
         <img src={cover} alt={titles[0]} />
       </div>

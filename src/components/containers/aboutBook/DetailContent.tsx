@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import DetailNav from "./detail/detailContent/DetailNav";
 import { useRef } from "react";
-
 import { navItemList } from "./detail/detailContent/DetailNav";
 import DetailReview from "./detail/detailContent/detailReview";
-import { bookDataProps } from "@components/model/interfaceModel";
+import { BookItem } from "@components/model/interfaceModel";
 
-export default function DetailContent({ content }: { content: bookDataProps }) {
+export default function DetailContent({ bookData }: { bookData: BookItem }) {
   // const scrollRef = useRef<HTMLElement[]>([]);
-  const scrollRef = useRef<HTMLElement[]>([]);
   // scrollRef.current : []
+  const scrollRef = useRef<HTMLElement[]>([]);
 
   const [test, setTest] = useState(false);
 
   // 4개의 객체를  담을 Ref배열
   // DOM을 건들기 위해 사용
 
-  const ReviewList = content;
+  const ReviewList = bookData;
   useEffect(() => console.log("DetailContent reRendering"), [test]);
   const onClick = () => {
     setTest(!test);

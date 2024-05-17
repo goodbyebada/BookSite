@@ -8,60 +8,60 @@ import { isEmptyObj } from "@components/model/interfaceModel";
 import AboutBookTemplate from "@components/component/AboutBookTemplate";
 
 export default function ShowBooks({ dataList }: { dataList: Data[] }) {
-  if (!dataList) {
-    return null;
-  }
+  // const slideRef = useRef<HTMLDivElement>(null);
+  // if (!dataList) {
+  //   return null;
+  // }
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const viewingSkillMobile = 2; // 모바일 환경에서 2개의 책 보여주기
-  const viewingSkillDesktop = 4; // 데스크탑 환경에서 4개의 책 보여주기
-  const TOTAL_SLIDES = Math.ceil(dataList.length / viewingSkillDesktop);
-  const firstSlide = 0;
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  // const viewingSkillMobile = 2; // 모바일 환경에서 2개의 책 보여주기
+  // const viewingSkillDesktop = 4; // 데스크탑 환경에서 4개의 책 보여주기
+  // const TOTAL_SLIDES = Math.ceil(dataList.length / viewingSkillDesktop);
+  // const firstSlide = 0;
 
-  const handleClickNextSlide = () => {
-    if (currentSlide >= TOTAL_SLIDES - 1) {
-      setCurrentSlide(firstSlide);
-    } else {
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
+  // const handleClickNextSlide = () => {
+  //   if (currentSlide >= TOTAL_SLIDES - 1) {
+  //     setCurrentSlide(firstSlide);
+  //   } else {
+  //     setCurrentSlide(currentSlide + 1);
+  //   }
+  // };
 
-  const handleClickPrevSlide = () => {
-    if (currentSlide === firstSlide) {
-      setCurrentSlide(TOTAL_SLIDES - 1);
-    } else {
-      setCurrentSlide(currentSlide - 1);
-    }
-  };
+  // const handleClickPrevSlide = () => {
+  //   if (currentSlide === firstSlide) {
+  //     setCurrentSlide(TOTAL_SLIDES - 1);
+  //   } else {
+  //     setCurrentSlide(currentSlide - 1);
+  //   }
+  // };
 
-  const [singleBookWidth, setSingleBookWidth] = useState(0);
-  const slideRef = useRef<HTMLDivElement>(null);
+  // const [singleBookWidth, setSingleBookWidth] = useState(0);
 
-  const handleResize = () => {
-    if (slideRef.current) {
-      const slideWidth = slideRef.current.offsetWidth;
-      const singleBookWidth =
-        slideWidth /
-        (window.innerWidth < 768 ? viewingSkillMobile : viewingSkillDesktop); // 모바일/데스크탑 환경 구분
-      setSingleBookWidth(singleBookWidth);
-    }
-  };
+  // const handleResize = () => {
+  //   if (slideRef.current) {
+  //     const slideWidth = slideRef.current.offsetWidth;
+  //     const singleBookWidth =
+  //       slideWidth /
+  //       (window.innerWidth < 768 ? viewingSkillMobile : viewingSkillDesktop); // 모바일/데스크탑 환경 구분
+  //     setSingleBookWidth(singleBookWidth);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    handleResize(); // 최초 렌더링 시에도 실행
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("resize", handleResize);
+  //   handleResize(); // 최초 렌더링 시에도 실행
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
 
-  useEffect(() => {
-    if (slideRef.current) {
-      slideRef.current.style.transition = "all 0.5s ease-in-out";
-      slideRef.current.style.transform = `translateX(-${
-        (currentSlide * 100) /
-        (window.innerWidth < 768 ? viewingSkillMobile : viewingSkillDesktop)
-      }%)`;
-    }
-  }, [currentSlide]);
+  // useEffect(() => {
+  //   if (slideRef.current) {
+  //     slideRef.current.style.transition = "all 0.5s ease-in-out";
+  //     slideRef.current.style.transform = `translateX(-${
+  //       (currentSlide * 100) /
+  //       (window.innerWidth < 768 ? viewingSkillMobile : viewingSkillDesktop)
+  //     }%)`;
+  //   }
+  // }, [currentSlide]);
 
   // 위에는 캐러셀
 
@@ -69,25 +69,23 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
    * 모달 기능
    */
   const [isOpenDetail, setOpenDetail] = useState(false);
+  const [selectedBook, setSelectedBook] = useState<BookItem | null>(null);
 
-  const [selectBook, setSelectBook] = useState<BookItem | null>(null);
-
-  const selectBookEvent = (bookItem: BookItem) => {
+  const clickBook = (bookItem: BookItem) => {
     if (isEmptyObj(bookItem)) {
       return;
     }
-    setSelectBook(bookItem);
+    setSelectedBook(bookItem);
   };
 
-  const cancleSelectBookEvent = () => {
-    setSelectBook(null);
+  const closeAboutBook = () => {
+    setSelectedBook(null);
   };
 
   useEffect(() => {
-    // console.log(isEmptyObj(selectBook));
-    console.log(selectBook);
+    console.log(selectedBook);
     console.log("selectBook값 변동");
-  }, [selectBook]);
+  }, [selectedBook]);
 
   return (
     <div className={styles.book_recommand_list}>
@@ -95,18 +93,19 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
 
       {/* <div className={styles.book_skill_container}> */}
 
-      {selectBook ? (
+      {selectedBook ? (
         <AboutBookTemplate
-          bookInfo={selectBook}
-          clickEvent={cancleSelectBookEvent}
+          selectedBook={selectedBook}
+          clickEvent={closeAboutBook}
         />
       ) : (
-        <div className={styles.book_skill_slide} ref={slideRef}>
+        // <div className={styles.book_skill_slide} ref={slideRef}>
+        <div className={styles.book_skill_slide}>
           {dataList.map((data, idx) => (
             <Book
               key={idx}
               bookInfo={data}
-              clickEvent={(bookItem: BookItem) => selectBookEvent(bookItem)}
+              clickEvent={(bookItem: BookItem) => clickBook(bookItem)}
             />
           ))}
           {/* BOOLIST */}

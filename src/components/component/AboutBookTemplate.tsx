@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import AboutBookWrapper from "@components/containers/aboutBook/AboutBookWrapper";
-import BookInfoContent from "@components/containers/aboutBook/BookInfoContent";
+import AboutBook from "@components/containers/aboutBook/AboutBook";
 import { BookItem } from "@components/model/interfaceModel";
+import LoadingComponent from "./LoadingComponent";
 
 export default function AboutBookTemplate({
-  bookInfo,
+  selectedBook,
   clickEvent,
 }: {
-  bookInfo: BookItem;
+  selectedBook: BookItem;
   clickEvent: () => void;
 }) {
-  const [data, setDataList] = useState<BookItem>(bookInfo);
+  const [currentBook, setBook] = useState<BookItem>(selectedBook);
 
   return (
     <>
       <AboutBookWrapper>
-        {data === undefined ? (
-          <div className="test_ui">"loading"</div>
+        {currentBook ? (
+          <AboutBook bookData={currentBook} />
         ) : (
-          <BookInfoContent bookData={data} />
+          <LoadingComponent />
         )}
         <button onClick={clickEvent}>창닫기</button>
       </AboutBookWrapper>
