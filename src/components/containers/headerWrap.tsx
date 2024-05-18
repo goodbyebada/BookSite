@@ -6,6 +6,7 @@
  * 사이즈에 따라 달라질 예정이다
  */
 "use client";
+import { HEADER_HEIGHT } from "@data/const";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -21,14 +22,13 @@ export default function HeaderWrap({
   };
   console.log("Header Wrap Reder");
   return (
-    <>
-      <div className="header_wrapper">
-        <nav className={`header`}>
-          <div className="d-flex text-white flex-row justify-content-between">
-            <Link className="p-3 navbar-brand" href={"/"}>
-              HOME
-            </Link>
-            {/* <ul className="ms-auto">
+    <div className="header_wrapper">
+      <nav className={`header`} style={{ height: HEADER_HEIGHT }}>
+        <div className="d-flex text-white flex-row justify-content-between">
+          <Link className="p-3 navbar-brand" href={"/"}>
+            HOME
+          </Link>
+          {/* <ul className="ms-auto">
             <Link onClick={onClick} className="p-3 nav-link" href="/loginPage">
               Login
             </Link>
@@ -36,11 +36,12 @@ export default function HeaderWrap({
               Profile
             </Link>
           </ul> */}
-          </div>
-        </nav>
+        </div>
+      </nav>
+      <div className="main_content_area" style={{ paddingTop: HEADER_HEIGHT }}>
         {children}
-        <footer className="footer">Footer</footer>
       </div>
-    </>
+      <footer className="footer">Footer</footer>
+    </div>
   );
 }

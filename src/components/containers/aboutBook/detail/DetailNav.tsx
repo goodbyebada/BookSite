@@ -4,6 +4,7 @@ import { navItemType } from "@components/model/interfaceModel";
 import { type } from "os";
 import { useState } from "react";
 import { useRef, useEffect } from "react";
+import { HEADER_HEIGHT } from "@data/const";
 
 export default function DetailNav({
   scrollRef,
@@ -76,12 +77,8 @@ export default function DetailNav({
   }, [scrollRef]);
 
   return (
-    <div className="sticky-top">
-      <ul
-        id="aboutBook_tab"
-        style={{ position: "sticky", top: "30px" }}
-        className="nav nav-tabs bg-info"
-      >
+    <div style={{ position: "sticky", top: HEADER_HEIGHT }}>
+      <ul id="aboutBook_tab" className="nav nav-tabs bg-info">
         {navItemList.map((elem, idx) => (
           <li
             onClick={() => {
