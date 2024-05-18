@@ -22,12 +22,13 @@ export default function HeaderWrap({
   console.log("Header Wrap Reder");
   return (
     <>
-      <nav className={`header`}>
-        <div className="d-flex text-white flex-row justify-content-between">
-          <Link className="p-3 navbar-brand" href={"/"}>
-            HOME
-          </Link>
-          {/* <ul className="ms-auto">
+      <div className="header_wrapper">
+        <nav className={`header`}>
+          <div className="d-flex text-white flex-row justify-content-between">
+            <Link className="p-3 navbar-brand" href={"/"}>
+              HOME
+            </Link>
+            {/* <ul className="ms-auto">
             <Link onClick={onClick} className="p-3 nav-link" href="/loginPage">
               Login
             </Link>
@@ -35,12 +36,11 @@ export default function HeaderWrap({
               Profile
             </Link>
           </ul> */}
-        </div>
-      </nav>
-      {children}
-      <footer style={{ height: "200px", background: "blue", color: "white" }}>
-        Footer
-      </footer>
+          </div>
+        </nav>
+        {children}
+        <footer className="footer">Footer</footer>
+      </div>
     </>
   );
 }

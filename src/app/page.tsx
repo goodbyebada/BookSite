@@ -3,12 +3,12 @@
 
 import React, { useState, useEffect } from "react";
 import BookListTamplate from "../components/component/BookListTemplate";
-import SelectTemplate from "@components/component/SelectTemplate";
+import UserInputForm from "@components/component/UserInputForm";
 
 export default function Home() {
   return (
     <main>
-      <SelectTemplate />
+      <UserInputForm />
     </main>
   );
 }

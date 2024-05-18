@@ -6,6 +6,12 @@ import { useState, useRef, useEffect, use } from "react";
 import { BookItem, Data } from "@components/model/interfaceModel";
 import { isEmptyObj } from "@components/model/interfaceModel";
 import AboutBookTemplate from "@components/component/AboutBookTemplate";
+import { returnBookList } from "@components/model/interfaceModel";
+/**
+ *
+ * @param param0
+ * @returns BOOKLIST PAGE화면을 보여줍니다.
+ */
 
 export default function ShowBooks({ dataList }: { dataList: Data[] }) {
   // const slideRef = useRef<HTMLDivElement>(null);
@@ -101,7 +107,7 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
       ) : (
         // <div className={styles.book_skill_slide} ref={slideRef}>
         <div className={styles.book_skill_slide}>
-          {dataList.map((data, idx) => (
+          {returnBookList(dataList).map((data, idx) => (
             <Book
               key={idx}
               bookInfo={data}

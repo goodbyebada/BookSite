@@ -1,7 +1,6 @@
 html {
   margin: 0;
   padding: 0;
-  /* height: 100vh; */
 }
 
 body {
@@ -9,6 +8,7 @@ body {
   padding: 0;
   height: 100%;
   background-color: rgb(242, 252, 252);
+  height: 100vh;
 }
 
 main {
@@ -19,6 +19,23 @@ main {
   display: flex;
   justify-content: center;
   align-self: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+  background-color: bisque;
+  overflow-x: scroll;
+}
+
+.test {
+  height: 500px;
+  text-align: center;
+  background: rgb(155, 195, 155);
+  border-style: solid;
+
+  border-color: rgb(0, 0, 0);
 }
 
 /* select Form */
@@ -85,6 +102,14 @@ a {
   background-color: var(--bs-blue);
 }
 
+.header_wrapper {
+  height: 100%;
+}
+
+.footer {
+  background-color: var(--bs-blue);
+  width: 100%;
+}
 nav {
   width: 100%;
   flex-wrap: wrap;

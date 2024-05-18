@@ -1,4 +1,6 @@
-export const dummyDataList = [
+import { Data } from "@components/model/interfaceModel";
+
+export const dummyDataList: Data[] = [
   {
     item: [
       {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import GenderForm from "@components/containers/patron/GenderForm";
-import PatronTypeSelector from "@components/containers/patron/EducationSelector";
-import BirthdateForm from "@components/containers/patron/BirthdateForm";
-import Department from "@components/containers/patron/Department";
+import GenderForm from "@components/containers/formItems/GenderForm";
+import PatronTypeSelector from "@components/containers/formItems/EducationSelector";
+import BirthdateForm from "@components/containers/formItems/BirthdateForm";
+import Department from "@components/containers/formItems/Department";
 import { useRouter } from "next/navigation";
 import { inputData } from "@components/model/interfaceModel";
 
@@ -51,7 +51,7 @@ const bookList = "/bookList";
 const getBookInfo = "/getBookInfo";
 const routeUrl = bookList;
 
-const SelectTemplate = () => {
+const UserInputForm = () => {
   const [formData, setFormData] = useState<inputData>(
     setInputForm("CSdata")
     // setInputForm("BSdata")
@@ -120,19 +120,8 @@ const SelectTemplate = () => {
       >
         제출
       </button>
-
-      <button
-        type="button"
-        className="btn btn-primary"
-        onClick={() => {
-          checkSubmitCondition();
-          // input란 체크 후 이동
-        }}
-      >
-        test
-      </button>
     </div>
   );
 };
 
-export default SelectTemplate;
+export default UserInputForm;

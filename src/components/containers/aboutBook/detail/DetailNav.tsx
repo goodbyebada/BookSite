@@ -5,19 +5,12 @@ import { type } from "os";
 import { useState } from "react";
 import { useRef, useEffect } from "react";
 
-export const navItemList: navItemType[] = [
-  { idx: 0, tagId: "description", item: "책 소개" },
-  { idx: 1, tagId: "category", item: "카테고리" },
-  { idx: 2, tagId: "subInfo ", item: "기본 정보" },
-];
-
-
-
-
 export default function DetailNav({
   scrollRef,
+  navItemList,
 }: {
   scrollRef: React.MutableRefObject<HTMLElement[]>;
+  navItemList: navItemType[];
 }) {
   const [navIndex, setNavIndex] = useState<null | number>(null);
 
@@ -26,12 +19,8 @@ export default function DetailNav({
   /**
    * click 시
    * navIndex가 navItemList의 인덱스로 설정된다.
-   *
    */
 
-  /**
-   *
-   */
   useEffect(() => {
     if (navIndex !== null) {
       scrollRef.current[navIndex]?.scrollIntoView({ behavior: "smooth" });
@@ -88,7 +77,11 @@ export default function DetailNav({
 
   return (
     <div className="sticky-top">
-      <ul id="aboutBook_tab" className="nav nav-tabs">
+      <ul
+        id="aboutBook_tab"
+        style={{ position: "sticky", top: "30px" }}
+        className="nav nav-tabs bg-info"
+      >
         {navItemList.map((elem, idx) => (
           <li
             onClick={() => {

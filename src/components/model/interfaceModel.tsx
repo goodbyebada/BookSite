@@ -18,8 +18,8 @@
  * 이 list가 서버에서 오는 값이다.
  *
  *
- * { "item": []} => Data
- * [ { "item": []} , { "item": []} , { "item": []} ] => 최종 api Response
+ * { "item": [{ 특징이 담긴 객체 }]} => Data
+ * [ { "item": [{}]} , { "item": [{}]} , { "item": [{}]} ] => 최종 api Response
  * Api Response 는 Data[] 형식으로 온다.
  *
  *
@@ -45,6 +45,16 @@ export function returnSingleBookItem(apiResponse: Data[], index: number) {
 
 /**
  *
+ * @param apiResponse Data[] type의 response map으로 줘 하나의 Data
+ * @returns  item 객체를 담은 리스트  [  {title : "test", author : "seo "}, {item: { title : "hey", ```}}]
+ */
+export function returnBookList(apiResponse: Data[]) {
+  const itemObjList = apiResponse.map((e) => e.item[0]);
+  return itemObjList;
+}
+
+/**
+ *
  * @param obj 객체
  * @returns 빈 객체라면 true
  */
@@ -64,6 +74,7 @@ export interface inputData {
 }
 
 export interface BookItem {
+  id?: number;
   title: string;
   link: string;
   author: string;
@@ -78,6 +89,7 @@ export interface BookItem {
   publisher: string;
   adult: boolean;
   fixedPrice: boolean;
+  seriesInfo?: any;
   subInfo: {
     subTitle: string;
     originalTitle: string;
@@ -114,6 +126,8 @@ export interface navItemType {
   idx: number;
   tagId: string;
   item: string;
+  content: string | BookItem[];
+  onClickBook: ((bookItem: BookItem) => void) | null;
 }
 
 export type loginFormType = {

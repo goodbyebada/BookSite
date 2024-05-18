@@ -6,7 +6,7 @@ import { Data } from "@components/model/interfaceModel";
 
 /**
  *
- * @param param0
+ * @param param0 bookInfo: Data; clickEvent: (bookItem: BookItem) => void;
  * @returns BookList 보여주는 페이지의 singleBook
  */
 
@@ -14,10 +14,10 @@ export default function Book({
   bookInfo,
   clickEvent,
 }: {
-  bookInfo: Data;
+  bookInfo: BookItem;
   clickEvent: (bookItem: BookItem) => void;
 }) {
-  const { title, author, publisher, cover }: BookItem = bookInfo.item[0];
+  const { title, author, publisher, cover }: BookItem = bookInfo;
   //데이터 구조
 
   const titles = title.split("-");
@@ -27,7 +27,8 @@ export default function Book({
     <div
       className={styles.single_book}
       onClick={() => {
-        clickEvent(bookInfo.item[0]);
+        clickEvent(bookInfo);
+        window.scrollTo(0, 0);
       }}
     >
       <div id={styles.book_cover}>
