@@ -88,6 +88,8 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
     setSelectedBook(null);
   };
 
+  //selectedBook의 값이 바뀌어 재렌더링시 실행될 콜백함수
+  //Tests
   useEffect(() => {
     console.log(selectedBook);
     console.log("selectBook값 변동");
@@ -95,8 +97,6 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
 
   return (
     <div className={styles.book_recommand_list}>
-      <h3>추천합니다!</h3>
-
       {/* <div className={styles.book_skill_container}> */}
 
       {selectedBook ? (
@@ -106,16 +106,20 @@ export default function ShowBooks({ dataList }: { dataList: Data[] }) {
         />
       ) : (
         // <div className={styles.book_skill_slide} ref={slideRef}>
-        <div className={styles.book_skill_slide}>
-          {returnBookList(dataList).map((data, idx) => (
-            <Book
-              key={idx}
-              bookInfo={data}
-              clickEvent={(bookItem: BookItem) => clickBook(bookItem)}
-            />
-          ))}
-          {/* BOOLIST */}
-        </div>
+        <>
+          <h3>추천합니다!</h3>
+          <div className={styles.show_book_list}>
+            {returnBookList(dataList).map((data, idx) => (
+              <Book
+                key={idx}
+                bookInfo={data}
+                clickEvent={(bookItem: BookItem) => clickBook(bookItem)}
+              />
+            ))}
+
+            {/* BOOLIST */}
+          </div>
+        </>
       )}
     </div>
   );

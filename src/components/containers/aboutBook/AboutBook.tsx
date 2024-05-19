@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import DetailContent from "./DetailContent";
 import { returnBookList } from "@components/model/interfaceModel";
 import { dummyRecommandDataList } from "@data/dummyRecommandData";
+import BookBasicInfo from "../book/BookBasicInfo";
 
 /**
  *
@@ -20,8 +21,6 @@ export default function AboutBook({
   const { title, author, publisher, cover } = bookData;
 
   const testDataList = returnBookList(dummyRecommandDataList);
-  const [dummyId, setDummyId] = useState(0);
-
   const [recommandBookList, setRecommandBookList] = useState(testDataList);
 
   // 현재 dummyData id 없어서 isbn으로 대체해 진행
@@ -48,26 +47,16 @@ export default function AboutBook({
   // AboutBook 컴포넌트 모든 내용 수정
 
   return (
+    // <div className="about_book">
     <div>
       {/*학교 데이터에서 제공되는 정보만 정렬함 */}
-      <div id="base_info" className="book_header">
-        {/* 책 커버  */}
-        <div id="book_cover">
-          <img src={cover}></img>
-        </div>
-
-        <div className="Details">
-          <h1>{title}</h1>
-          <h2>{author}</h2>
-          <h3>{publisher}</h3>
-        </div>
-      </div>
+      <BookBasicInfo bookData={bookData} />
 
       {/* 책 상세정보  */}
       <DetailContent
         bookData={bookData}
         recommandBookList={recommandBookList}
-        changeBook = {changeBook}
+        changeBook={changeBook}
       />
     </div>
   );

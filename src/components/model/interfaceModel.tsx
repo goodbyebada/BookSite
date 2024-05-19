@@ -72,30 +72,37 @@ export interface inputData {
   birthdate: number;
   department: string;
 }
-
+/**
+ * pubdate
+ */
 export interface BookItem {
   id?: number;
   title: string;
-  link: string;
   author: string;
-  pubDate: string;
-  description: string;
+  publisher: string;
+  publish_year: number;
+  class: number;
   isbn: string;
   isbn13: string;
-  mallType: string;
-  cover: string;
-  categoryId: number;
+  description: string;
   categoryName: string;
-  publisher: string;
-  adult: boolean;
-  fixedPrice: boolean;
-  seriesInfo?: any;
-  subInfo: {
+  subInfo?: {
     subTitle: string;
     originalTitle: string;
     itemPage: number;
   };
-  categoryIdList: {
+  cover: string;
+
+  //백엔드에서 보내는 데이터 확정
+
+  pubDate?: string;
+  link?: string;
+  mallType?: string;
+  categoryId?: number;
+  adult?: boolean;
+  fixedPrice?: boolean;
+  seriesInfo?: any;
+  categoryIdList?: {
     categoryId: number;
     categoryName: string;
   }[];

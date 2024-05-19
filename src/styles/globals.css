@@ -6,6 +6,10 @@ body {
   background-color: rgb(242, 252, 252);
 }
 
+h3 {
+  padding: 20px;
+}
+
 #root,
 #root > div {
   height: 100%;
@@ -25,26 +29,28 @@ body {
   height: 50px;
 }
 
+/* .wrapper {
+  display: grid;
+  display: flex;
+  flex-direction: row;
+  background-color: bisque;
+  overflow-x: scroll;
+} */
+
 main {
   display: flex;
   justify-content: center;
   align-self: center;
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-  background-color: bisque;
-  overflow-x: scroll;
+img {
+  width: 200px;
+  height: 295px;
 }
 
 .test {
-  min-height: 40vh;
-  text-align: center;
-  background: rgb(155, 195, 155);
   border-style: solid;
-  border-color: rgb(0, 0, 0);
+  border-color: rgb(164, 9, 199);
 }
 
 /* select Form */

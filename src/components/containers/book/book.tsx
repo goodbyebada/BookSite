@@ -25,7 +25,7 @@ export default function Book({
 
   return (
     <div
-      className={styles.single_book}
+      className={styles.book_item}
       onClick={() => {
         clickEvent(bookInfo);
         window.scrollTo(0, 0);

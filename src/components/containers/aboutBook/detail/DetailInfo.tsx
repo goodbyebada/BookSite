@@ -1,24 +1,16 @@
 "use client";
-import { forwardRef, useEffect } from "react";
-import React from "react";
+import React, { forwardRef } from "react";
 import { BookItem, navItemType } from "@components/model/interfaceModel";
 import Book from "@components/containers/book/book";
-
-/**
- * Description / Category 등 상세정보를 담는 UI 컴포넌트
- * @param param0  scrollRef, navItemList
- * @returns 상세정보 UI
- */
+import styles from "@styles/detailInfo.module.css";
+import RecommandList from "./RecommandList";
 
 const DetailInfo = forwardRef(
   (props: navItemType, ref: React.ForwardedRef<HTMLElement[]>) => {
-    // reviewRef는 컴포넌트가 마운트될 때 해당 DOM 요소의 참조가 전달되는 것입니다. 이것은 React의 ref 시스템이 자동으로 처리하는 부분입니다.
-
     const { idx, tagId, item, content, onClickBook } = props;
 
     return (
       <section
-        className="test"
         ref={(currentRef: HTMLElement) => {
           if (
             ref !== null &&
@@ -28,23 +20,20 @@ const DetailInfo = forwardRef(
             ref.current[idx] = currentRef;
           }
         }}
+        id={tagId}
+        className={styles.detail_section}
       >
-        <h1> {item}</h1>
-        <hr></hr>
-        <div className="wrapper">
-          {typeof content == "string"
-            ? content
-            : content.map((e, idx) => (
-                <Book
-                  bookInfo={e}
-                  key={idx}
-                  clickEvent={
-                    onClickBook !== null
-                      ? onClickBook
-                      : (bookItem: BookItem) => {}
-                  }
-                />
-              ))}
+        <div className={styles.detail_info_content}>
+          <h2 className={styles.detail_title}>{item}</h2>
+          {typeof content === "string" ? (
+            content !== "" ? (
+              <p className={styles.detail_text}>{content}</p>
+            ) : (
+              <p className={styles.detail_text}>설명이 없습니다.</p>
+            )
+          ) : (
+            <RecommandList props={props} />
+          )}
         </div>
       </section>
     );

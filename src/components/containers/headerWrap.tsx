@@ -38,7 +38,13 @@ export default function HeaderWrap({
           </ul> */}
         </div>
       </nav>
-      <div className="main_content_area" style={{ paddingTop: HEADER_HEIGHT }}>
+      <div
+        className="main_content_area"
+        style={{
+          paddingTop: `${HEADER_HEIGHT}`,
+          paddingBottom: HEADER_HEIGHT,
+        }}
+      >
         {children}
       </div>
       <footer className="footer">Footer</footer>

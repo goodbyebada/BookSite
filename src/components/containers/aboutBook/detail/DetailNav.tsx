@@ -78,7 +78,7 @@ export default function DetailNav({
 
   return (
     <div style={{ position: "sticky", top: HEADER_HEIGHT }}>
-      <ul id="aboutBook_tab" className="nav nav-tabs bg-info">
+      <ul id="aboutBook_tab" className="nav nav-tabs bg-white ">
         {navItemList.map((elem, idx) => (
           <li
             onClick={() => {

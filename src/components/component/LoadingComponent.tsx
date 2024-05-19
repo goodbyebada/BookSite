@@ -1,11 +1,15 @@
-export default function LoadingComponent() {
+// Loading.tsx
+
+import React from "react";
+import styles from "@styles/loading.module.css";
+
+const Loading: React.FC = () => {
   return (
-    <div>
-      <div
-        style={{ backgroundColor: "blue", height: "500px", margin: "250px" }}
-      >
-        Loading...
-      </div>
+    <div className={styles.loading_container}>
+      <div className={styles.loading_spinner}></div>
+      <p className={styles.loading_text}>Loading...</p>
     </div>
   );
-}
+};
+
+export default Loading;
