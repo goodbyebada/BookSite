@@ -165,8 +165,31 @@ ul {
 .swiper {
   position: sticky;
 }
-/* @media screen and (max-width: 1024px) {
-  .tab_content {
-    padding: 0 24px;
-  }
+
+/* 자동완성시  배경 바뀌는 이슈 fix*/
+/* inputTag  userform 컴포넌트 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:autofill,
+input:autofill:hover,
+input:autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  box-shadow: 0 0 0px 1000px #fff inset;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:-webkit-autofill:focus,
+input:autofill:focus {
+  box-shadow: 0 0 0px 1000px #fff inset;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* .form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 } */

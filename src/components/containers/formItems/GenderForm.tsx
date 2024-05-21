@@ -1,23 +1,35 @@
 import React, { useState } from "react";
+import SelectOption from "./SelectOption";
 
 interface GenderFormProps {
-  onChange: (data: any) => void;
+  // onChange: (data: any) => void;
+  // 이거면 에러 나야하는거 아니냐
+
+  onChange: (value: string) => void;
 }
 
 const GenderForm = ({ onChange }: GenderFormProps) => {
-  const [gender, setGender] = useState<string>("");
+  const [gender, setGender] = useState<string>("F");
 
   const handleGenderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedGender = e.target.value;
-    setGender(selectedGender);
-    onChange({ gender: selectedGender }); // 데이터를 상위 컴포넌트로 전달
+    const gender = e.target.value;
+    setGender(gender);
+
+    // onChange({ gender: selectedGender });
+    // data가 any일때
+
+    onChange(gender);
   };
 
   return (
     <div className="gender-select">
       <label htmlFor="genderSelect">성별 선택</label>
-      <select id="genderSelect" value={gender} onChange={handleGenderChange}>
-        <option value="">성별을 선택하세요</option>
+      <select
+        value={gender}
+        className="form-select"
+        aria-label="Default select example"
+        onChange={handleGenderChange}
+      >
         <option value="F">여자</option>
         <option value="M">남자</option>
       </select>

@@ -18,8 +18,6 @@ export default function AboutBook({
   bookData: BookItem;
   changeBook: (bookItem: BookItem) => void;
 }) {
-  const { title, author, publisher, cover } = bookData;
-
   const testDataList = returnBookList(dummyRecommandDataList);
   const [recommandBookList, setRecommandBookList] = useState(testDataList);
 

@@ -10,9 +10,12 @@ interface DepartmentProps {
 const Department = ({ onChange }: DepartmentProps) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [matchedDepartments, setMatchedDepartments] = useState<string[]>([]);
+  const [isClicked, setClicked] = useState<boolean>(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
+    console.log(value);
+    // if (value === "") return;
     setInputValue(value);
 
     // 입력된 값과 일치하는 학과 찾기
@@ -30,21 +33,30 @@ const Department = ({ onChange }: DepartmentProps) => {
   };
 
   return (
-    <div className="department">
-      <input
-        type="text"
-        placeholder="소속을 입력하세요"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <div className="departement-ex">
+    <>
+      <form className="form-floating">
+        <input
+          type="text"
+          className="form-control"
+          id="floatingInputValue"
+          value={inputValue}
+          onChange={handleInputChange}
+        ></input>
+        <label htmlFor="floatingInputValue">소속을 입력하세요</label>
+      </form>
+
+      <ul className="list-group">
         {matchedDepartments.map((department, index) => (
-          <div key={index} onClick={() => handleDepartmentClick(department)}>
+          <li
+            className={"list-group-item"}
+            key={index}
+            onClick={() => handleDepartmentClick(department)}
+          >
             {department}
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </>
   );
 };
 

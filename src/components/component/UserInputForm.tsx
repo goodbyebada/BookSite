@@ -6,16 +6,18 @@ import Department from "@components/containers/formItems/Department";
 import { useRouter } from "next/navigation";
 import { inputData } from "@components/model/interfaceModel";
 
+const EMPTY_NUMBER = 0;
+const EMPTY_STRING = "";
+const DEFAULT_GENDER = "F";
+const DEFAULT_PATORN_ID = 1;
+
+const TEST_BIRTH = 19991111;
+
 /**
  * Test를 위한 Form
  * @returns
  */
 function setInputForm(key: keyof typeof testDataObj) {
-  const EMPTY_NUMBER = 0;
-  const EMPTY_STRING = "";
-
-  const TEST_BIRTH = 19991111;
-
   enum Department {
     ComputerScience = "컴퓨터학부",
     Business = "경영학부",
@@ -37,8 +39,8 @@ function setInputForm(key: keyof typeof testDataObj) {
     },
 
     SET: {
-      gender: EMPTY_STRING,
-      patron_type: EMPTY_NUMBER,
+      gender: DEFAULT_GENDER,
+      patron_type: DEFAULT_PATORN_ID,
       birthdate: EMPTY_NUMBER,
       department: EMPTY_STRING,
     },
@@ -53,10 +55,11 @@ const routeUrl = bookList;
 
 const UserInputForm = () => {
   const [formData, setFormData] = useState<inputData>(
-    setInputForm("CSdata")
+    // setInputForm("CSdata")
     // setInputForm("BSdata")
-    // setInputForm("SET")
+    setInputForm("SET")
   );
+
   const router = useRouter();
 
   /**
@@ -74,23 +77,34 @@ const UserInputForm = () => {
     return queryString;
   };
 
+  //공백임을 체크한다
   const checkSubmitCondition = () => {
     const isFormComplete = Object.values(formData).every(
       (field) => field !== ""
     );
 
-    if (!isFormComplete) {
+    // 조건에 맞는지 체크한다.
+    const checkAlltheInput = (formData: inputData) => {
+      const { gender, patron_type, birthdate, department } = formData;
+
+      return (
+        gender !== EMPTY_STRING && birthdate > 0 && department !== EMPTY_STRING
+      );
+    };
+
+    if (!isFormComplete && !checkAlltheInput(formData)) {
+      console.log(formData);
       alert("작성되지 않은 항목이 있습니다!");
       return;
     }
-
+    console.log(formData);
     // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
     const queryString = returnQueryString(formData);
 
     router.push(routeUrl + "?" + queryString);
   };
 
-  const handleInputChange = (fieldName: string, value: string) => {
+  const handleInputChange = (fieldName: string, value: string | number) => {
     setFormData((prevData: inputData) => ({
       ...prevData,
       [fieldName]: value,

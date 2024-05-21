@@ -16,16 +16,21 @@ export default function AboutBookTemplate({
   return (
     <>
       <AboutBookWrapper>
-        <button className="btn btn-primary" onClick={clickEvent}>
-          창닫기
-        </button>
+        <button
+          type="button"
+          className="btn-close"
+          aria-label="Close"
+          onClick={clickEvent}
+        ></button>
         {currentBook ? (
-          <AboutBook
-            bookData={currentBook}
-            changeBook={(bookItem: BookItem) => {
-              setBook(bookItem);
-            }}
-          />
+          <>
+            <AboutBook
+              bookData={currentBook}
+              changeBook={(bookItem: BookItem) => {
+                setBook(bookItem);
+              }}
+            />
+          </>
         ) : (
           <LoadingComponent />
         )}

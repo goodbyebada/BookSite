@@ -10,6 +10,7 @@ import LoadingComponent from "@components/component/LoadingComponent";
 
 const dummyApiUrl = `https://bc87b101-4a86-4419-a9e4-2648ec0bde58.mock.pstmn.io/getBookInfo`;
 // const apiURL = "https://www.aladin.co.kr/ttb/api";
+const local = `http://localhost:3000/bookList`;
 const requestBaseUrl = dummyApiUrl;
 
 const BookList = () => {
@@ -39,7 +40,9 @@ const BookList = () => {
         console.log(bookData); // JSON 데이터를 로깅
         setData(bookData);
       })
-      .catch((error) => {})
+      .catch((error) => {
+        console.log(error);
+      })
       .then((error) => {
         // 다음 핸들러 실행
         ErrHandling();

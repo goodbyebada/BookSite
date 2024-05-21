@@ -22,14 +22,19 @@ const BirthdateForm = ({ onChange }: BirthdateFormProps) => {
 
   return (
     <div>
-      <input
-        type="date"
-        value={birthdate}
-        onChange={handleBirthdateChange}
-        placeholder="생년월일을 입력하세요"
-        max={maxDate}
-        min={minDate}
-      />
+      <div className="form-floating">
+        <input
+          type="date"
+          value={birthdate}
+          onChange={handleBirthdateChange}
+          placeholder="생년월일을 입력하세요"
+          max={maxDate}
+          min={minDate}
+          id="floatingInput"
+          className="form-control"
+        />
+        <label htmlFor="floatingInput">생년월일을 입력하세요</label>
+      </div>
     </div>
   );
 };
