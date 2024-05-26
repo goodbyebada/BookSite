@@ -32,6 +32,8 @@ const BookList = () => {
   useEffect(() => {
     const params = decodeURI(`${searchParams}`);
 
+    console.log(params);
+
     fetch(requestBaseUrl + "?" + params)
       .then((response) => {
         return response.json(); // JSON 데이터를 반환하는 프로미스

@@ -1,8 +1,20 @@
 import { useState } from "react";
 
 interface BirthdateFormProps {
-  onChange: (value: string) => void;
+  onChange: (value: number) => void;
 }
+
+const makeBirthToNumber = (birthDateString: string) => {
+  // '-'를 기준으로 문자열을 분리하여 배열로 변환
+  let parts = birthDateString.split("-");
+
+  // 배열을 다시 합쳐서 원하는 형식으로 변환
+  let formattedDate = parts.join("");
+
+  console.log(formattedDate); // 출력: 20051228
+
+  return Number(formattedDate);
+};
 
 const BirthdateForm = ({ onChange }: BirthdateFormProps) => {
   const [birthdate, setBirthdate] = useState<string>("");
@@ -14,7 +26,10 @@ const BirthdateForm = ({ onChange }: BirthdateFormProps) => {
 
     if (value >= minDate && value <= maxDate) {
       setBirthdate(value);
-      onChange(value);
+
+      const numberBirthDate = makeBirthToNumber(value);
+
+      onChange(numberBirthDate);
     } else {
       alert(`생년월일을 다시 확인해주세요!`);
     }

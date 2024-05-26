@@ -5,6 +5,12 @@ import BirthdateForm from "@components/containers/formItems/BirthdateForm";
 import Department from "@components/containers/formItems/Department";
 import { useRouter } from "next/navigation";
 import { inputData } from "@components/model/interfaceModel";
+import {
+  startYear,
+  endYear,
+} from "@components/containers/formItems/ExtendedDropdown";
+
+import ExtendedDropdown from "@components/containers/formItems/ExtendedDropdown";
 
 const EMPTY_NUMBER = 0;
 const EMPTY_STRING = "";
@@ -70,9 +76,6 @@ const UserInputForm = () => {
   const returnQueryString = (data: inputData) => {
     const { gender, patron_type, birthdate, department } = data;
 
-    console.log(gender);
-    console.log(typeof gender);
-
     const queryString = `gender=${gender}&patron-type=${patron_type}&birthdate=${birthdate}&department=${department}`;
     return queryString;
   };
@@ -82,26 +85,29 @@ const UserInputForm = () => {
     const isFormComplete = Object.values(formData).every(
       (field) => field !== ""
     );
+    // ture여야지 조건통과
 
     // 조건에 맞는지 체크한다.
     const checkAlltheInput = (formData: inputData) => {
       const { gender, patron_type, birthdate, department } = formData;
 
       return (
-        gender !== EMPTY_STRING && birthdate > 0 && department !== EMPTY_STRING
+        gender !== EMPTY_STRING &&
+        startYear <= birthdate &&
+        birthdate <= endYear &&
+        department !== EMPTY_STRING
       );
     };
 
-    if (!isFormComplete && !checkAlltheInput(formData)) {
-      console.log(formData);
-      alert("작성되지 않은 항목이 있습니다!");
+    if (isFormComplete && checkAlltheInput(formData)) {
+      // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
+      const queryString = returnQueryString(formData);
+      router.push(routeUrl + "?" + queryString);
       return;
     }
-    console.log(formData);
-    // 전부 작성했다면 bookList 경로 이동 쿼리문과 함께
-    const queryString = returnQueryString(formData);
 
-    router.push(routeUrl + "?" + queryString);
+    // 작성되지 않은 항목이 있을때
+    alert("작성되지 않은 항목이 있습니다.");
   };
 
   const handleInputChange = (fieldName: string, value: string | number) => {
@@ -117,9 +123,11 @@ const UserInputForm = () => {
       <PatronTypeSelector
         onChange={(value) => handleInputChange("patron_type", value)}
       />
-      <BirthdateForm
+
+      <ExtendedDropdown
         onChange={(value) => handleInputChange("birthdate", value)}
       />
+
       <Department
         onChange={(value) => handleInputChange("department", value)}
       />

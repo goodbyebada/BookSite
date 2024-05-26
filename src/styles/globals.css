@@ -186,6 +186,19 @@ input:autofill:focus {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+/* list-group Department 선택 */
+.list-group-item:hover,
+.list-group-item:active {
+  background-color: var(--bs-blue);
+  color: white;
+}
+
+.list-group-container {
+  max-height: 500px;
+  box-sizing: content-box;
+  overflow-y: scroll;
+}
+
 /* .form-control:focus {
   color: var(--bs-body-color);
   background-color: var(--bs-body-bg);
