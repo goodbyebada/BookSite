@@ -1,10 +1,17 @@
 "use client";
-import { BookItem } from "@components/model/interfaceModel";
+import {
+  BookItem,
+  serverBook,
+  serverBookToData,
+} from "@components/model/interfaceModel";
 import { useEffect, useState } from "react";
 import DetailContent from "./DetailContent";
 import { returnBookList } from "@components/model/interfaceModel";
 import { dummyRecommandDataList } from "@data/dummyRecommandData";
 import BookBasicInfo from "../book/BookBasicInfo";
+import { Api2Url, useDummy } from "@data/const";
+import { dummyData } from "@data/dummyData";
+import { Data } from "@components/model/interfaceModel";
 
 /**
  *
@@ -18,8 +25,34 @@ export default function AboutBook({
   bookData: BookItem;
   changeBook: (bookItem: BookItem) => void;
 }) {
-  const testDataList = returnBookList(dummyRecommandDataList);
-  const [recommandBookList, setRecommandBookList] = useState(testDataList);
+  useEffect(() => {
+    if (useDummy) {
+      const bookData = dummyData;
+      const convertedDataList: Data[] = serverBookToData(bookData);
+      const bookItemLsit: BookItem[] = returnBookList(convertedDataList);
+      setRecommandBookList(bookItemLsit);
+      // console.log("새로 호출ㄴ");
+    } else {
+      fetch(Api2Url)
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          const serverBookList: serverBook[] = res;
+          const dataList = serverBookToData(serverBookList);
+          return returnBookList(dataList);
+        })
+        .then((dataList: BookItem[]) => {
+          setRecommandBookList(dataList);
+        })
+        .catch((e) => {
+          console.log("서버에서 내려주는 데이터 형식 확인 필요");
+        });
+    }
+  }, [bookData]);
+
+  // const testDataList = returnBookList(dummyRecommandDataList);
+  const [recommandBookList, setRecommandBookList] = useState<BookItem[]>();
 
   // 현재 dummyData id 없어서 isbn으로 대체해 진행
   const [id, setId] = useState();
@@ -27,11 +60,6 @@ export default function AboutBook({
   /**
    * 모델 2로 API 호출
    */
-
-  useEffect(() => {
-    //모델 2 호출
-    // fetch();구현될 자리
-  }, [id]);
 
   // 책을 선택하면 recommandBookList를 선택하면 setId()
   // 1. title, author, publisher , cover 기본정보 수정
@@ -50,12 +78,18 @@ export default function AboutBook({
       {/*학교 데이터에서 제공되는 정보만 정렬함 */}
       <BookBasicInfo bookData={bookData} />
 
-      {/* 책 상세정보  */}
-      <DetailContent
-        bookData={bookData}
-        recommandBookList={recommandBookList}
-        changeBook={changeBook}
-      />
+      {
+        /* 책 상세정보  */
+        recommandBookList ? (
+          <DetailContent
+            bookData={bookData}
+            recommandBookList={recommandBookList}
+            changeBook={changeBook}
+          />
+        ) : (
+          <div>"추천 도서 로딩중입니다"</div>
+        )
+      }
     </div>
   );
 }

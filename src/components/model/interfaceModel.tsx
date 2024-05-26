@@ -66,6 +66,52 @@ export function isEmptyObj(obj: Object | null) {
   return false;
 }
 
+export function serverBookToData(severBookList: serverBook[]): Data[] {
+  const datalist: Data[] = severBookList.map((elem) => {
+    if (elem.isbn13 === null) {
+      elem.isbn13 = "";
+    }
+    if (elem.description === null) {
+      elem.description = "";
+    }
+
+    const bookItem: BookItem = {
+      id: elem.id,
+      title: elem.title,
+      author: elem.author,
+      publisher: elem.publisher,
+      publish_year: parseInt(elem.publishYear),
+      class: parseInt(elem.classCode),
+      isbn: elem.isbn,
+      isbn13: elem.isbn13,
+      description: elem.description,
+      categoryName: "",
+      subInfo: undefined,
+      cover: elem.imgPath,
+    };
+
+    const result: Data = {
+      item: [bookItem],
+    };
+    return result;
+  });
+
+  return datalist;
+}
+
+export interface serverBook {
+  id: number;
+  title: string;
+  author: string;
+  publisher: string;
+  publishYear: string;
+  classCode: string;
+  isbn: string;
+  isbn13: string | null;
+  description: string | null;
+  imgPath: string;
+}
+
 export interface inputData {
   gender: string;
   patron_type: number;

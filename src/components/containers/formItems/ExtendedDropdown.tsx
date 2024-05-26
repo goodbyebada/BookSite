@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { initYear } from "@data/const";
 
 interface itemProps {
   onChange: (value: number) => void;
@@ -21,7 +22,7 @@ const yearsArray = Array.from({ length: endYear - startYear + 1 }, (_, index) =>
 );
 
 export default function ExtendedDropdown({ onChange }: itemProps) {
-  const [inputValue, setInputValue] = useState<string>("1990");
+  const [inputValue, setInputValue] = useState<string>(initYear);
   const [matchedItems, setMatchedItems] = useState<string[]>([]);
   const [check, setCheck] = useState<boolean>(false);
   const [alertSetence, setAlertSentence] = useState("");
@@ -65,11 +66,15 @@ export default function ExtendedDropdown({ onChange }: itemProps) {
   const autoCompletion = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (matchedItems.length == 1) {
-      let item = matchedItems[0];
+    // if (matchedItems.length == 1) {
+    //   let item = matchedItems[0];
+    //   setCheck(true);
+    //   afterEnter(item);
+    //   return;
+    // }
+    if (yearsArray.includes(inputValue)) {
       setCheck(true);
-      afterEnter(item);
-      return;
+      afterEnter(inputValue);
     }
 
     /**

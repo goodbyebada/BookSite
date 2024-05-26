@@ -9,15 +9,16 @@ import {
   startYear,
   endYear,
 } from "@components/containers/formItems/ExtendedDropdown";
+import { initYear } from "@data/const";
 
 import ExtendedDropdown from "@components/containers/formItems/ExtendedDropdown";
 
-const EMPTY_NUMBER = 0;
+const INIT_YEAR = parseInt(initYear);
 const EMPTY_STRING = "";
 const DEFAULT_GENDER = "F";
 const DEFAULT_PATORN_ID = 1;
 
-const TEST_BIRTH = 19991111;
+const TEST_BIRTH = parseInt("1990");
 
 /**
  * Test를 위한 Form
@@ -47,7 +48,7 @@ function setInputForm(key: keyof typeof testDataObj) {
     SET: {
       gender: DEFAULT_GENDER,
       patron_type: DEFAULT_PATORN_ID,
-      birthdate: EMPTY_NUMBER,
+      birthdate: INIT_YEAR,
       department: EMPTY_STRING,
     },
   };
@@ -106,6 +107,7 @@ const UserInputForm = () => {
       return;
     }
 
+    console.log(formData);
     // 작성되지 않은 항목이 있을때
     alert("작성되지 않은 항목이 있습니다.");
   };
